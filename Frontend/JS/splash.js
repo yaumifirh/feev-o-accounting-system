@@ -44,7 +44,7 @@ function startSplash() {
                 */
 
                 window.location.replace(
-                    "index.html"
+                    "dashboard.html"
                 );
 
             } else {
