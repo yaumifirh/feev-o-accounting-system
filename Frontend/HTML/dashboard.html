@@ -1,0 +1,6243 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FIFO Accounting System</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <!-- HAMBURGER -->
+
+            <button
+                type="button"
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Toggle Menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <!-- BRAND -->
+
+            <div class="brand">
+
+                <div class="brand-logo-wrapper">
+
+                    <img
+                        src="../assets/logo.png"
+                        alt="FIFO Accounting System"
+                        class="brand-logo"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+
+                    <div
+                        class="brand-logo-fallback"
+                        style="display: none;"
+                    >
+                        F
+                    </div>
+
+                </div>
+
+
+                <div class="brand-text">
+
+                    <div class="brand-title">
+                        FIFO ACCOUNTING SYSTEM
+                    </div>
+
+                    <div class="brand-subtitle">
+                        Sistem Akuntansi Persediaan Berbasis FIFO
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TOPBAR RIGHT
+        ================================================== -->
+
+        <div class="topbar-right">
+
+            <!-- CONNECTION -->
+
+            <div class="connection-status">
+
+                <span class="status-dot"></span>
+
+                Connected
+
+            </div>
+
+
+            <div class="current-date" id="currentDate">
+    Senin, 28 September 2026
+</div>
+
+
+            <!-- ACCOUNT -->
+
+            <div class="account-wrapper">
+
+                <button
+                    type="button"
+                    class="account-button"
+                    id="accountButton"
+                >
+
+                    <div
+                        class="user-avatar"
+                        id="userAvatar"
+                    >
+                        U
+                    </div>
+
+
+                    <div class="account-text">
+
+                        <strong id="userName">
+                            User
+                        </strong>
+
+                        <span id="userRole">
+                            System Administrator
+                        </span>
+
+                    </div>
+
+
+                    <span class="account-arrow">
+                        ▾
+                    </span>
+
+                </button>
+
+
+                <!-- ACCOUNT MENU -->
+
+                <div
+                    class="account-menu"
+                    id="accountMenu"
+                >
+
+                    <div class="account-menu-header">
+
+                        <span>
+                            ACCOUNT
+                        </span>
+
+                        <strong id="accountName">
+                            User
+                        </strong>
+
+                        <strong id="accountEmail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="account-menu-item"
+                        id="editProfileButton"
+                    >
+
+                        <span class="menu-icon">
+                            👤
+                        </span>
+
+                        Edit Profil
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="account-menu-item"
+                        id="accountInfoButton"
+                    >
+
+                        <span class="menu-icon">
+                            ℹ
+                        </span>
+
+                        Informasi Akun
+
+                    </button>
+
+
+                    <div class="account-menu-divider"></div>
+
+
+                    <button
+                        type="button"
+                        class="account-menu-item logout-item"
+                        id="logoutButton"
+                    >
+
+                        <span class="menu-icon">
+                            ↪
+                        </span>
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN LAYOUT
+    ====================================================== -->
+
+    <div
+        class="main-layout"
+        id="mainLayout"
+    >
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-heading">
+                MENU UTAMA
+            </div>
+
+
+<nav class="sidebar-nav ledger-nav">
+
+    <button
+        type="button"
+        class="nav-item active"
+        data-page="dashboard"
+    >
+        <span class="nav-number">01</span>
+        <span class="nav-icon">◉</span>
+        <span class="nav-content">Ringkasan</span>
+    </button>
+
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="products"
+    >
+        <span class="nav-number">02</span>
+        <span class="nav-icon">▣</span>
+        <span class="nav-content">Master Produk</span>
+    </button>
+
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="suppliers"
+    >
+        <span class="nav-number">03</span>
+        <span class="nav-icon">♧</span>
+        <span class="nav-content">Supplier</span>
+    </button>
+
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="customers"
+    >
+        <span class="nav-number">04</span>
+        <span class="nav-icon">♙</span>
+        <span class="nav-content">Pelanggan</span>
+    </button>
+
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="purchases"
+    >
+        <span class="nav-number">05</span>
+        <span class="nav-icon">↓</span>
+        <span class="nav-content">Pembelian</span>
+    </button>
+
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="sales"
+    >
+        <span class="nav-number">06</span>
+        <span class="nav-icon">↑</span>
+        <span class="nav-content">Penjualan</span>
+    </button>
+
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="fifo"
+    >
+        <span class="nav-number">07</span>
+        <span class="nav-icon">≋</span>
+        <span class="nav-content">FIFO</span>
+    </button>
+
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="inventoryCard"
+    >
+        <span class="nav-number">08</span>
+        <span class="nav-icon">▤</span>
+        <span class="nav-content">Kartu Persediaan</span>
+    </button>
+
+
+    <!-- =================================================
+         PENYESUAIAN PERSEDIAAN
+    ================================================== -->
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="adjustment"
+    >
+        <span class="nav-number">09</span>
+        <span class="nav-icon">⚠</span>
+        <span class="nav-content">Penyesuaian Persediaan</span>
+    </button>
+
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="journal"
+    >
+        <span class="nav-number">10</span>
+        <span class="nav-icon">≡</span>
+        <span class="nav-content">Jurnal</span>
+    </button>
+
+
+    <button
+        type="button"
+        class="nav-item"
+        data-page="reports"
+    >
+        <span class="nav-number">11</span>
+        <span class="nav-icon">▥</span>
+        <span class="nav-content">Laporan</span>
+    </button>
+
+</nav>
+
+            <div class="sidebar-footer">
+                FIFO ACCOUNTING SYSTEM
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="content">
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <section
+                id="dashboardPage"
+                class="page-section active-page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-kicker">
+                            DASHBOARD
+                        </span>
+
+                        <h1>
+                            Ringkasan Sistem
+                        </h1>
+
+                        <p>
+                            Pantau kondisi persediaan,
+                            transaksi pembelian,
+                            penjualan, dan informasi
+                            produk secara ringkas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STAT CARDS -->
+
+                <div class="stat-grid">
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            TOTAL PRODUK
+                        </span>
+
+                        <strong
+                            id="totalProducts"
+                            class="stat-value"
+                        >
+                            0
+                        </strong>
+
+                        <span class="stat-note">
+                            Produk aktif
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            NILAI PERSEDIAAN
+                        </span>
+
+                        <strong
+                            id="inventoryValue"
+                            class="stat-value"
+                        >
+                            Rp0
+                        </strong>
+
+                        <span class="stat-note">
+                            Berdasarkan stok
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            PEMBELIAN
+                        </span>
+
+                        <strong
+                            id="purchaseCount"
+                            class="stat-value"
+                        >
+                            0
+                        </strong>
+
+                        <span class="stat-note">
+                            Total transaksi
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            PENJUALAN
+                        </span>
+
+                        <strong
+                            id="salesCount"
+                            class="stat-value"
+                        >
+                            0
+                        </strong>
+
+                        <span class="stat-note">
+                            Total transaksi
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WARNING + INVENTORY -->
+
+                <div class="dashboard-two-column">
+
+                    <!-- WARNING STOCK -->
+
+                    <div
+                        class="content-card dashboard-panel dashboard-pink"
+                    >
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-kicker">
+                                    PERHATIAN
+                                </span>
+
+                                <h2>
+                                    Warning Stock
+                                </h2>
+
+                            </div>
+
+                            <span
+                                id="lowStockCount"
+                                class="warning-count"
+                            >
+                                0
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="lowStockList"
+                            class="low-stock-list"
+                        >
+
+                            <div class="stock-safe-message">
+                                Memuat data stok...
+                            </div>
+
+                        </div>
+
+
+                        <div style="display: none;">
+
+                            <span id="dashboardActiveProducts">
+                                0
+                            </span>
+
+                            <span id="dashboardLowStockProducts">
+                                0
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PERSEDIAAN TERBARU -->
+
+                    <div
+                        class="content-card dashboard-panel dashboard-green"
+                    >
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-kicker">
+                                    INVENTORY
+                                </span>
+
+                                <h2>
+                                    Persediaan Terbaru
+                                </h2>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="outline-button"
+                                data-page-target="products"
+                            >
+                                Lihat Produk
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>SKU</th>
+                                        <th>Produk</th>
+                                        <th>Kategori</th>
+                                        <th>Stok</th>
+                                        <th>Nilai</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="dashboardInventoryBody">
+
+                                    <tr>
+
+                                        <td colspan="5">
+                                            Memuat data...
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SALES + PURCHASE TREND -->
+
+                <div class="dashboard-two-column">
+
+                    <!-- SALES -->
+
+                    <div
+                        class="content-card chart-card dashboard-blue"
+                    >
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-kicker">
+                                    PENJUALAN
+                                </span>
+
+                                <h2>
+                                    Tren Penjualan
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas id="salesTrendChart"></canvas>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PURCHASE -->
+
+                    <div
+                        class="content-card chart-card dashboard-yellow"
+                    >
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-kicker">
+                                    PEMBELIAN
+                                </span>
+
+                                <h2>
+                                    Tren Pembelian
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas id="purchaseTrendChart"></canvas>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TOP PRODUCTS + CATEGORY -->
+
+                <div class="dashboard-two-column">
+
+                    <!-- TOP PRODUCTS -->
+
+                    <div
+                        class="content-card chart-card dashboard-purple"
+                    >
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-kicker">
+                                    PRODUK TERLARIS
+                                </span>
+
+                                <h2>
+                                    Top 5 Produk Terlaris
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas id="topProductsChart"></canvas>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CATEGORY -->
+
+                    <div
+                        class="content-card chart-card dashboard-teal"
+                    >
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-kicker">
+                                    NILAI PERSEDIAAN
+                                </span>
+
+                                <h2>
+                                    Nilai Persediaan
+                                    Berdasarkan Kategori
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas id="inventoryCategoryChart"></canvas>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MASTER PRODUK
+            ================================================== -->
+
+            <section
+                id="productsPage"
+                class="page-section"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-kicker">
+                            MASTER DATA
+                        </span>
+
+                        <h1>
+                            Master Produk
+                        </h1>
+
+                        <p>
+                            Kelola data produk makanan
+                            dan minuman yang digunakan
+                            dalam sistem persediaan FIFO.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="addProductButton"
+                    >
+                        + Tambah Produk
+                    </button>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="toolbar">
+
+                        <div class="search-box">
+
+                            <input
+                                type="text"
+                                id="productSearch"
+                                placeholder="Cari SKU atau nama produk..."
+                            >
+
+                        </div>
+
+
+                        <div class="toolbar-info">
+
+                            Menampilkan
+                            <strong>
+                                produk aktif
+                            </strong>
+                            dalam sistem.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>SKU</th>
+                                    <th>Nama Produk</th>
+                                    <th>Kategori</th>
+                                    <th>Satuan</th>
+                                    <th>Harga Beli</th>
+                                    <th>Harga Jual</th>
+                                    <th>Stok</th>
+                                    <th>Min. Stok</th>
+                                    <th>Status</th>
+                                    <th class="action-header">Aksi</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="productTableBody">
+
+                                <tr>
+
+                                    <td colspan="10">
+                                        Memuat data produk...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+<!-- =================================================
+     SUPPLIER
+================================================== -->
+
+<section
+    id="suppliersPage"
+    class="page-section"
+>
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-header">
+
+        <div>
+
+            <span class="page-kicker">
+                MASTER DATA
+            </span>
+
+            <h1>
+                Supplier
+            </h1>
+
+            <p>
+                Kelola data pemasok untuk mendukung
+                transaksi pembelian.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            class="btn-primary"
+            id="addSupplierButton"
+        >
+            + Tambah Supplier
+        </button>
+
+    </div>
+
+
+    <!-- SUPPLIER TABLE -->
+
+    <div class="content-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    DAFTAR SUPPLIER
+                </span>
+
+                <h2>
+                    Data Supplier
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div
+            class="supplier-toolbar"
+        >
+
+            <div
+                class="supplier-search"
+            >
+
+                <label
+                    for="supplierSearchInput"
+                >
+                    Cari Supplier
+                </label>
+
+                <input
+                    type="text"
+                    id="supplierSearchInput"
+                    placeholder="Cari kode atau nama supplier..."
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            No.
+                        </th>
+
+                        <th>
+                            Kode Supplier
+                        </th>
+
+                        <th>
+                            Nama Supplier
+                        </th>
+
+                        <th>
+                            No. Telepon
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Alamat
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th class="action-header">Aksi</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="supplierTableBody"
+                >
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="empty-state"
+                        >
+                            Belum ada data supplier.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     SUPPLIER MODAL
+================================================== -->
+
+<div
+    id="supplierModal"
+    class="modal-overlay"
+    style="display: none;"
+>
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    MASTER DATA
+                </span>
+
+                <h2>
+                    Tambah Supplier
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeSupplierModalButton"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form
+            id="supplierForm"
+        >
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label
+                        for="supplierCodeInput"
+                    >
+                        Kode Supplier
+                    </label>
+
+                    <input
+                        type="text"
+                        id="supplierCodeInput"
+                        placeholder="Otomatis"
+                        readonly
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label
+                        for="supplierNameInput"
+                    >
+                        Nama Supplier
+                    </label>
+
+                    <input
+                        type="text"
+                        id="supplierNameInput"
+                        placeholder="Nama supplier"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label
+                        for="supplierPhoneInput"
+                    >
+                        No. Telepon
+                    </label>
+
+                    <input
+                        type="text"
+                        id="supplierPhoneInput"
+                        placeholder="08xxxxxxxxxx"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label
+                        for="supplierEmailInput"
+                    >
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="supplierEmailInput"
+                        placeholder="supplier@email.com"
+                    >
+
+                </div>
+
+
+                <div
+                    class="form-group form-group-full"
+                >
+
+                    <label
+                        for="supplierAddressInput"
+                    >
+                        Alamat
+                    </label>
+
+                    <textarea
+                        id="supplierAddressInput"
+                        rows="3"
+                        placeholder="Alamat supplier"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="cancelSupplierButton"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                >
+                    Simpan Supplier
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     CUSTOMER / MASTER PELANGGAN
+================================================== -->
+
+<section
+    id="customersPage"
+    class="page-section"
+>
+
+    <div class="page-header">
+
+        <div>
+
+            <span class="page-kicker">
+                MASTER DATA
+            </span>
+
+            <h1>
+                Pelanggan
+            </h1>
+
+            <p>
+                Kelola data pelanggan untuk mendukung
+                transaksi penjualan.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            class="btn-primary"
+            id="addCustomerFromSalesButton"
+        >
+            + Tambah Pelanggan
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         CUSTOMER TABLE
+    ================================================== -->
+
+    <div class="content-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    DAFTAR PELANGGAN
+                </span>
+
+                <h2>
+                    Data Pelanggan
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <div class="customer-toolbar">
+
+            <div class="customer-search">
+
+                <label for="customerSearchInput">
+                    Cari Pelanggan
+                </label>
+
+                <input
+                    type="text"
+                    id="customerSearchInput"
+                    placeholder="Cari kode atau nama pelanggan..."
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            No.
+                        </th>
+
+                        <th>
+                            Kode Pelanggan
+                        </th>
+
+                        <th>
+                            Nama Pelanggan
+                        </th>
+
+                        <th>
+                            No. Telepon
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Alamat
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th class="action-header">Aksi</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="customerTableBody">
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="empty-state"
+                        >
+                            Memuat data pelanggan...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     CUSTOMER MODAL
+================================================== -->
+
+<div
+    id="customerModal"
+    class="modal-overlay"
+>
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    MASTER DATA
+                </span>
+
+                <h2>
+                    Tambah Pelanggan
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeCustomerModalButton"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="customerForm">
+
+            <div class="form-grid">
+
+
+                <!-- KODE PELANGGAN -->
+
+                <div class="form-group">
+
+                    <label for="customerCodeInput">
+                        Kode Pelanggan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerCodeInput"
+                        placeholder="Otomatis"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- NAMA -->
+
+                <div class="form-group">
+
+                    <label for="customerNameInput">
+                        Nama Pelanggan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerNameInput"
+                        placeholder="Nama pelanggan"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TELEPON -->
+
+                <div class="form-group">
+
+                    <label for="customerPhoneInput">
+                        No. Telepon
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerPhoneInput"
+                        placeholder="08xxxxxxxxxx"
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="customerEmailInput">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="customerEmailInput"
+                        placeholder="pelanggan@email.com"
+                    >
+
+                </div>
+
+
+                <!-- ALAMAT -->
+
+                <div class="form-group form-group-full">
+
+                    <label for="customerAddressInput">
+                        Alamat
+                    </label>
+
+                    <textarea
+                        id="customerAddressInput"
+                        rows="3"
+                        placeholder="Alamat pelanggan"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- MODAL ACTIONS -->
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="cancelCustomerButton"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                >
+                    Simpan Pelanggan
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+            <!-- =================================================
+                 PURCHASE
+            ================================================== -->
+
+            <section
+                id="purchasesPage"
+                class="page-section"
+            >
+
+                <!-- PAGE HEADER -->
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-kicker">
+                            TRANSAKSI
+                        </span>
+
+                        <h1>
+                            Pembelian
+                        </h1>
+
+                        <p>
+                            Catat transaksi pembelian
+                            barang masuk dan tambahkan
+                            barang ke persediaan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PURCHASE FORM
+                ================================================== -->
+
+                <div class="content-card purchase-form-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Input Pembelian
+                            </h2>
+
+                            <p>
+                                Masukkan informasi transaksi
+                                dan barang yang dibeli.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="purchaseForm">
+
+
+                        <!-- =================================================
+                             PURCHASE INFORMATION
+                        ================================================== -->
+
+                        <div class="form-grid">
+
+
+                            <!-- NOMOR PEMBELIAN -->
+
+                            <div class="form-group">
+
+                                <label for="purchaseNumber">
+                                    No. Pembelian
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="purchaseNumber"
+                                    name="purchaseNumber"
+                                    placeholder="PB-0001"
+                                    readonly
+                                >
+
+                            </div>
+
+
+                            <!-- TANGGAL -->
+
+                            <div class="form-group">
+
+                                <label for="purchaseDate">
+                                    Tanggal Pembelian
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="purchaseDate"
+                                    name="purchaseDate"
+                                    required
+                                >
+
+                            </div>
+
+
+<!-- METODE PEMBAYARAN -->
+
+<div class="form-group">
+
+    <label for="purchasePaymentMethod">
+        Metode Pembayaran
+    </label>
+
+    <select
+        id="purchasePaymentMethod"
+        name="purchasePaymentMethod"
+        required
+    >
+
+        <option value="cash">
+            Tunai
+        </option>
+
+        <option value="credit">
+            Kredit
+        </option>
+
+    </select>
+
+    <small>
+        Pilih metode pembayaran pembelian.
+    </small>
+
+</div>
+
+
+                            <!-- SUPPLIER -->
+
+                            <div class="form-group purchase-supplier-field">
+
+                                <label for="purchaseSupplier">
+                                    Supplier
+                                </label>
+
+
+                                <div class="purchase-select-with-button">
+
+                                    <select
+                                        id="purchaseSupplier"
+                                        name="purchaseSupplier"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Memuat supplier...
+                                        </option>
+
+                                    </select>
+
+
+                                    <button
+                                        type="button"
+                                        class="add-master-button"
+                                        id="addSupplierFromPurchaseButton"
+                                    >
+                                        + Supplier Baru
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- =================================================
+                             ↑ FORM-GRID PEMBELIAN SELESAI DI SINI
+                        ================================================== -->
+
+
+                        <!-- =================================================
+                             PURCHASE ITEM
+                        ================================================== -->
+
+                        <div class="purchase-item-section">
+
+
+                            <div class="purchase-section-title">
+
+                                <h3>
+                                    Detail Barang
+                                </h3>
+
+                                <p>
+                                    Tambahkan produk yang dibeli
+                                    ke dalam transaksi.
+                                </p>
+
+                            </div>
+
+
+                            <!-- ITEM INPUT -->
+
+                            <div
+                                class="form-grid purchase-item-grid"
+                            >
+
+
+                                <!-- PRODUK -->
+
+<div class="form-group purchase-product-field">
+    <label for="purchaseProductSearch">Produk</label>
+
+    <div class="product-search-wrapper">
+        <input
+            type="text"
+            id="purchaseProductSearch"
+            placeholder="Ketik nama atau kode produk..."
+            autocomplete="off"
+        >
+
+        <input
+            type="hidden"
+            id="purchaseProduct"
+        >
+
+        <div
+            id="purchaseProductSuggestions"
+            class="product-suggestions"
+        ></div>
+    </div>
+
+    <small id="selectedPurchaseProductInfo" class="selected-product-info">
+        Belum ada produk dipilih.
+    </small>
+</div>
+
+
+                                <!-- JUMLAH -->
+
+                                <div class="form-group">
+
+                                    <label for="purchaseQuantity">
+                                        Jumlah
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="purchaseQuantity"
+                                        name="purchaseQuantity"
+                                        min="1"
+                                        step="0.01"
+                                        placeholder="0"
+                                    >
+
+                                </div>
+
+
+                                <!-- HARGA BELI -->
+
+                                <div class="form-group">
+
+                                    <label for="purchaseUnitPrice">
+                                        Harga Beli
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="purchaseUnitPrice"
+                                        name="purchaseUnitPrice"
+                                        min="0"
+                                        step="1"
+                                        placeholder="0"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- ITEM SUMMARY -->
+
+                            <div class="purchase-item-summary">
+
+                                <div>
+
+                                    <span>
+                                        Subtotal Item
+                                    </span>
+
+                                    <strong id="purchaseSubtotal">
+                                        Rp0
+                                    </strong>
+
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="secondary-button"
+                                    id="addPurchaseItemButton"
+                                >
+                                    + Tambah Item
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             PURCHASE DETAIL TABLE
+                        ================================================== -->
+
+                        <div class="purchase-detail-table">
+
+                            <div class="section-header">
+
+                                <div>
+
+                                    <h3>
+                                        Daftar Barang
+                                    </h3>
+
+                                    <p>
+                                        Barang yang sudah ditambahkan
+                                        ke transaksi pembelian.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="table-wrapper">
+
+                                <table>
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th>
+                                                No.
+                                            </th>
+
+                                            <th>
+                                                Produk
+                                            </th>
+
+                                            <th>
+                                                Jumlah
+                                            </th>
+
+                                            <th>
+                                                Harga Beli
+                                            </th>
+
+                                            <th>
+                                                Subtotal
+                                            </th>
+
+                                            <th>
+                                                Aksi
+                                            </th>
+
+                                        </tr>
+
+                                    </thead>
+
+
+                                    <tbody id="purchaseItemTableBody">
+
+                                        <tr>
+
+                                            <td
+                                                colspan="6"
+                                                class="empty-table-message"
+                                            >
+                                                Belum ada barang
+                                                yang ditambahkan.
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             PURCHASE TOTAL
+                        ================================================== -->
+
+                        <div class="purchase-total-box">
+
+                            <div>
+
+                                <span>
+                                    Total Pembelian
+                                </span>
+
+                                <strong id="purchaseTotal">
+                                    Rp0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             PURCHASE ACTION
+                        ================================================== -->
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                class="secondary-button"
+                                id="resetPurchaseButton"
+                            >
+                                Reset
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                                id="savePurchaseButton"
+                            >
+                                Simpan Pembelian
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- =================================================
+                     PURCHASE HISTORY
+                ================================================== -->
+
+                <div class="content-card purchase-history-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Riwayat Pembelian
+                            </h2>
+
+                            <p>
+                                Daftar transaksi pembelian
+                                yang sudah dicatat.
+                            </p>
+
+                        </div>
+
+
+                        <div class="toolbar">
+
+                            <input
+                                type="text"
+                                id="purchaseSearch"
+                                class="search-input"
+                                placeholder="Cari pembelian..."
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        No. Pembelian
+                                    </th>
+
+                                    <th>
+                                        Tanggal
+                                    </th>
+
+                                    <th>
+                                        Supplier
+                                    </th>
+
+                                    <th>
+                                        Total
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Aksi
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="purchaseTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="6"
+                                        class="empty-table-message"
+                                    >
+                                        Belum ada transaksi
+                                        pembelian.
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+           <!-- =================================================
+                SALES
+            ================================================== -->
+
+<section
+    id="salesPage"
+    class="page-section"
+>
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-header">
+
+        <div>
+
+            <span class="page-kicker">
+                TRANSAKSI
+            </span>
+
+            <h1>
+                Penjualan
+            </h1>
+
+            <p>
+                Catat transaksi penjualan
+                barang dan kurangi persediaan
+                berdasarkan metode FIFO.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SALES FORM
+    ================================================== -->
+
+    <div class="content-card sales-form-card">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Input Penjualan
+                </h2>
+
+                <p>
+                    Masukkan informasi transaksi
+                    dan barang yang dijual.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="salesForm">
+
+
+            <!-- =================================================
+                 SALES INFORMATION
+            ================================================== -->
+
+            <div class="form-grid">
+
+
+                <!-- NOMOR PENJUALAN -->
+
+                <div class="form-group">
+
+                    <label for="saleNumber">
+                        No. Penjualan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="saleNumber"
+                        name="saleNumber"
+                        placeholder="PJ-0001"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- TANGGAL -->
+
+                <div class="form-group">
+
+                    <label for="saleDate">
+                        Tanggal Penjualan
+                    </label>
+
+                    <input
+                        type="date"
+                        id="saleDate"
+                        name="saleDate"
+                        required
+                    >
+
+                </div>
+
+
+<!-- METODE PEMBAYARAN -->
+
+<div class="form-group">
+
+    <label for="salePaymentMethod">
+        Metode Pembayaran
+    </label>
+
+    <select
+        id="salePaymentMethod"
+        name="salePaymentMethod"
+        required
+    >
+
+        <option value="cash">
+            Tunai
+        </option>
+
+        <option value="credit">
+            Kredit
+        </option>
+
+    </select>
+
+    <small>
+        Pilih metode pembayaran penjualan.
+    </small>
+
+</div>
+
+
+                <!-- CUSTOMER -->
+
+                <div class="form-group sales-customer-field">
+
+                    <label for="saleCustomer">
+                        Pelanggan
+                    </label>
+
+                    <div class="purchase-select-with-button">
+
+                        <select
+                            id="saleCustomer"
+                            name="saleCustomer"
+                            required
+                        >
+
+                            <option value="">
+                                Memuat pelanggan...
+                            </option>
+
+                        </select>
+
+
+                        <button
+                            type="button"
+                            class="add-master-button"
+                            id="addCustomerFromSalesButton"
+                        >
+                            + Pelanggan Baru
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SALES ITEM
+            ================================================== -->
+
+            <div class="purchase-item-section">
+
+
+                <div class="purchase-section-title">
+
+                    <h3>
+                        Detail Barang
+                    </h3>
+
+                    <p>
+                        Tambahkan produk yang dijual
+                        ke dalam transaksi.
+                    </p>
+
+                </div>
+
+
+                <!-- ITEM INPUT -->
+
+                <div
+                    class="form-grid purchase-item-grid"
+                >
+
+
+                    <!-- PRODUK -->
+
+                    <div class="form-group sales-product-field">
+
+                        <label for="saleProductSearch">
+                            Produk
+                        </label>
+
+
+                        <div class="product-search-wrapper">
+
+                            <input
+                                type="text"
+                                id="saleProductSearch"
+                                placeholder="Ketik nama atau kode produk..."
+                                autocomplete="off"
+                            >
+
+
+                            <input
+                                type="hidden"
+                                id="saleProduct"
+                            >
+
+
+                            <div
+                                id="saleProductSuggestions"
+                                class="product-suggestions"
+                            ></div>
+
+                        </div>
+
+
+                        <small
+                            id="selectedSaleProductInfo"
+                            class="selected-product-info"
+                        >
+                            Belum ada produk dipilih.
+                        </small>
+
+                    </div>
+
+
+                    <!-- JUMLAH -->
+
+                    <div class="form-group">
+
+                        <label for="saleQuantity">
+                            Jumlah
+                        </label>
+
+                        <input
+                            type="number"
+                            id="saleQuantity"
+                            name="saleQuantity"
+                            min="1"
+                            step="0.01"
+                            placeholder="0"
+                        >
+
+                    </div>
+
+
+                    <!-- HARGA JUAL -->
+
+                    <div class="form-group">
+
+                        <label for="saleSellingPrice">
+                            Harga Jual
+                        </label>
+
+                        <input
+                            type="number"
+                            id="saleSellingPrice"
+                            name="saleSellingPrice"
+                            min="0"
+                            step="0.01"
+                            placeholder="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- ITEM SUMMARY -->
+
+                <div class="purchase-item-summary">
+
+                    <div>
+
+                        <span>
+                            Subtotal Item
+                        </span>
+
+                        <strong id="saleSubtotal">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="addSaleItemButton"
+                    >
+                        + Tambah Item
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SALES DETAIL TABLE
+            ================================================== -->
+
+            <div class="purchase-detail-table">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h3>
+                            Daftar Barang
+                        </h3>
+
+                        <p>
+                            Barang yang sudah ditambahkan
+                            ke transaksi penjualan.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No.
+                                </th>
+
+                                <th>
+                                    Produk
+                                </th>
+
+                                <th>
+                                    Jumlah
+                                </th>
+
+                                <th>
+                                    Harga Jual
+                                </th>
+
+                                <th>
+                                    Subtotal
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="saleItemTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="empty-table-message"
+                                >
+                                    Belum ada barang
+                                    yang ditambahkan.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SALES TOTAL
+            ================================================== -->
+
+            <div class="purchase-total-box">
+
+                <div>
+
+                    <span>
+                        Total Penjualan
+                    </span>
+
+                    <strong id="saleTotal">
+                        Rp0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SALES ACTION
+            ================================================== -->
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="resetSaleButton"
+                >
+                    Reset
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="saveSaleButton"
+                >
+                    Simpan Penjualan
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- =================================================
+         SALES HISTORY
+    ================================================== -->
+
+    <div class="content-card sales-history-card">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Riwayat Penjualan
+                </h2>
+
+                <p>
+                    Daftar transaksi penjualan
+                    yang sudah dicatat.
+                </p>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <input
+                    type="text"
+                    id="saleSearch"
+                    class="search-input"
+                    placeholder="Cari penjualan..."
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+<table>
+
+    <thead>
+
+        <tr>
+
+            <th>
+                No. Penjualan
+            </th>
+
+            <th>
+                Tanggal
+            </th>
+
+            <th>
+                Pelanggan
+            </th>
+
+            <th>
+                Total
+            </th>
+
+            <th>
+                HPP
+            </th>
+
+            <th>
+                Status
+            </th>
+
+            <th class="action-header">
+                Aksi
+            </th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody id="saleTableBody">
+
+        <tr>
+
+            <td
+                colspan="7"
+                class="empty-table-message"
+            >
+                Belum ada transaksi
+                penjualan.
+            </td>
+
+        </tr>
+
+    </tbody>
+
+</table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     FIFO
+================================================== -->
+
+<section
+    id="fifoPage"
+    class="page-section"
+>
+
+    <!-- =================================================
+         PAGE HEADER
+    ================================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <span class="page-kicker">
+                PERSEDIAAN
+            </span>
+
+            <h1>
+                FIFO
+            </h1>
+
+            <p>
+                Kelola dan pantau layer persediaan
+                berdasarkan metode First In, First Out.
+            </p>
+
+        </div>
+
+        <div class="page-header-actions">
+
+            <button
+                type="button"
+                class="btn-secondary"
+                id="refreshFifoButton"
+            >
+                ↻ Refresh
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FIFO SUMMARY
+    ================================================== -->
+
+    <div class="fifo-summary-grid">
+
+        <!-- TOTAL STOK -->
+
+        <div class="fifo-summary-card fifo-summary-stock">
+
+            <div class="fifo-summary-icon">
+                ▣
+            </div>
+
+            <div class="fifo-summary-content">
+
+                <span>
+                    TOTAL STOK
+                </span>
+
+                <strong id="fifoTotalStock">
+                    0
+                </strong>
+
+                <small>
+                    Unit persediaan tersedia
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- NILAI PERSEDIAAN -->
+
+        <div class="fifo-summary-card fifo-summary-value">
+
+            <div class="fifo-summary-icon">
+                Rp
+            </div>
+
+            <div class="fifo-summary-content">
+
+                <span>
+                    NILAI PERSEDIAAN
+                </span>
+
+                <strong id="fifoInventoryValue">
+                    Rp0
+                </strong>
+
+                <small>
+                    Berdasarkan layer FIFO
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- METODE -->
+
+        <div class="fifo-summary-card fifo-summary-method">
+
+            <div class="fifo-summary-icon">
+                ≋
+            </div>
+
+            <div class="fifo-summary-content">
+
+                <span>
+                    METODE PERSEDIAAN
+                </span>
+
+                <strong>
+                    FIFO
+                </strong>
+
+                <small>
+                    First In, First Out
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FILTER & LAYER
+    ================================================== -->
+
+    <div class="section-card fifo-main-card">
+
+        <!-- CARD HEADER -->
+
+        <div class="card-header fifo-main-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    INVENTORY LAYERS
+                </span>
+
+                <h2>
+                    Layer Persediaan
+                </h2>
+
+                <p>
+                    Setiap pembelian dicatat sebagai
+                    layer dengan harga perolehan masing-masing.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FILTER -->
+
+        <div class="fifo-filter-area">
+
+            <div class="form-group">
+
+                <label for="fifoProductFilter">
+                    Pilih Produk
+                </label>
+
+                <select
+                    id="fifoProductFilter"
+                >
+
+                    <option value="">
+                        Semua Produk
+                    </option>
+
+                </select>
+
+                <small>
+                    Pilih produk untuk melihat
+                    layer persediaannya.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table class="data-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Produk
+                        </th>
+
+                        <th>
+                            Tanggal
+                        </th>
+
+                        <th>
+                            Pembelian
+                        </th>
+
+                        <th>
+                            Qty Awal
+                        </th>
+
+                        <th>
+                            Qty Tersisa
+                        </th>
+
+                        <th>
+                            Harga / Unit
+                        </th>
+
+                        <th>
+                            Nilai Tersisa
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="fifoLayerTableBody">
+
+                    <tr>
+
+                        <td colspan="7">
+
+                            <div class="empty-state">
+
+                                <strong>
+                                    Memuat layer FIFO...
+                                </strong>
+
+                                <span>
+                                    Data persediaan sedang
+                                    dibaca dari sistem.
+                                </span>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FIFO INFORMATION
+    ================================================== -->
+
+    <div class="section-card fifo-info-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    INFORMASI
+                </span>
+
+                <h2>
+                    Cara Kerja FIFO
+                </h2>
+
+                <p>
+                    Sistem menggunakan persediaan yang
+                    masuk terlebih dahulu ketika terjadi penjualan.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="fifo-info-content">
+
+
+            <!-- STEP 01 -->
+
+            <div class="fifo-info-item">
+
+                <span class="fifo-info-number">
+                    01
+                </span>
+
+                <div>
+
+                    <strong>
+                        Pembelian pertama
+                    </strong>
+
+                    <p>
+                        Dicatat sebagai layer pertama
+                        dengan harga perolehan sesuai transaksi.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 02 -->
+
+            <div class="fifo-info-item">
+
+                <span class="fifo-info-number">
+                    02
+                </span>
+
+                <div>
+
+                    <strong>
+                        Pembelian berikutnya
+                    </strong>
+
+                    <p>
+                        Dicatat sebagai layer baru sehingga
+                        harga setiap pembelian tetap dapat dilacak.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 03 -->
+
+            <div class="fifo-info-item">
+
+                <span class="fifo-info-number">
+                    03
+                </span>
+
+                <div>
+
+                    <strong>
+                        Saat terjadi penjualan
+                    </strong>
+
+                    <p>
+                        Sistem mengambil persediaan dari
+                        layer yang paling lama terlebih dahulu.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     KARTU PERSEDIAAN
+================================================== -->
+
+<section
+    id="inventoryCardPage"
+    class="page-section"
+>
+
+    <!-- =================================================
+         PAGE HEADER
+    ================================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <span class="page-kicker">
+                PERSEDIAAN
+            </span>
+
+            <h1>
+                Kartu Persediaan
+            </h1>
+
+            <p>
+                Riwayat mutasi persediaan berdasarkan
+                transaksi pembelian, penjualan, dan metode FIFO.
+            </p>
+
+        </div>
+
+        <div class="page-header-actions">
+
+            <button
+                type="button"
+                class="btn-secondary"
+                id="refreshInventoryCardButton"
+            >
+                ↻ Refresh
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FILTER
+    ================================================== -->
+
+    <div class="section-card inventory-card-filter-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    KARTU PERSEDIAAN
+                </span>
+
+                <h2>
+                    Pilih Produk
+                </h2>
+
+                <p>
+                    Pilih produk untuk melihat seluruh
+                    mutasi persediaannya.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="inventory-card-filter-grid">
+
+            <div class="form-group">
+
+                <label for="inventoryCardProductFilter">
+                    Produk
+                </label>
+
+                <select
+                    id="inventoryCardProductFilter"
+                >
+
+                    <option value="">
+                        Pilih produk
+                    </option>
+
+                </select>
+
+                <small>
+                    Kartu persediaan ditampilkan
+                    berdasarkan produk yang dipilih.
+                </small>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="inventoryCardStartDate">
+                    Dari Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="inventoryCardStartDate"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="inventoryCardEndDate">
+                    Sampai Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="inventoryCardEndDate"
+                >
+
+            </div>
+
+
+            <div class="inventory-card-filter-actions">
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    id="applyInventoryCardFilterButton"
+                >
+                    Tampilkan
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="resetInventoryCardFilterButton"
+                >
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TABEL KARTU PERSEDIAAN
+    ================================================== -->
+
+    <div class="section-card inventory-card-table-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    MUTASI PERSEDIAAN
+                </span>
+
+                <h2 id="inventoryCardTableTitle">
+                    Kartu Persediaan
+                </h2>
+
+                <p>
+                    Menampilkan pergerakan masuk, keluar,
+                    saldo, harga perolehan, dan nilai persediaan.
+                </p>
+
+            </div>
+
+
+            <!-- TOMBOL PDF DI DALAM KOTAK KARTU PERSEDIAAN -->
+
+            <button
+                type="button"
+                class="btn-download-pdf"
+                id="downloadInventoryCardPdfButton"
+            >
+                ↓ Download PDF
+            </button>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="data-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Tanggal
+                        </th>
+
+                        <th>
+                            Keterangan
+                        </th>
+
+                        <th>
+                            Masuk
+                        </th>
+
+                        <th>
+                            Keluar
+                        </th>
+
+                        <th>
+                            Harga Jual/Unit 
+                        </th>
+
+                        <th>
+                            Total Harga Jual
+                        </th>
+
+                        <th>
+                            Sisa Persediaan
+                        </th>
+
+                        <th>
+                            Harga/Unit Persediaan Akhir
+                        </th>
+
+                        <th>
+                            Nilai Persediaan Akhir
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="inventoryCardTableBody">
+
+                    <tr>
+
+                        <td colspan="9">
+
+                            <div class="empty-state">
+
+                                <strong>
+                                    Pilih produk terlebih dahulu
+                                </strong>
+
+                                <span>
+                                    Pilih produk untuk melihat
+                                    kartu persediaannya.
+                                </span>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         TIMESTAMP
+    ================================================== -->
+
+    <div class="inventory-card-timestamp">
+
+        <span>
+            Laporan dibuka pada
+        </span>
+
+        <strong id="inventoryCardOpenedAt">
+            -
+        </strong>
+
+    </div>
+
+
+<!-- =================================================
+     CARA MEMBACA KARTU PERSEDIAAN
+================================================== -->
+
+<div class="section-card inventory-card-info-card">
+
+    <div class="card-header">
+
+        <div>
+
+            <span class="card-kicker">
+                INFORMASI
+            </span>
+
+            <h2>
+                Cara Membaca Kartu Persediaan
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="inventory-card-info-content">
+
+
+        <!-- PEMBELIAN -->
+
+        <div class="inventory-card-info-item">
+
+            <span class="inventory-card-info-number">
+                01
+            </span>
+
+            <div>
+
+                <strong>
+                    Persediaan Masuk
+                </strong>
+
+                <p>
+                    Pembelian menambah kuantitas dan
+                    nilai persediaan berdasarkan harga perolehan.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PENJUALAN -->
+
+        <div class="inventory-card-info-item">
+
+            <span class="inventory-card-info-number">
+                02
+            </span>
+
+            <div>
+
+                <strong>
+                    Persediaan Keluar
+                </strong>
+
+                <p>
+                    Penjualan mengurangi persediaan berdasarkan
+                    layer FIFO yang digunakan.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PENGGABUNGAN -->
+
+        <div class="inventory-card-info-item">
+
+            <span class="inventory-card-info-number">
+                03
+            </span>
+
+            <div>
+
+                <strong>
+                    Harga Sama Digabung
+                </strong>
+
+                <p>
+                    Pembelian dengan harga per unit yang sama
+                    ditampilkan sebagai satu kelompok persediaan.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =================================================
+     TUTUP KARTU PERSEDIAAN
+================================================== -->
+
+</section>
+
+
+<!-- =================================================
+     PENYESUAIAN PERSEDIAAN
+================================================== -->
+
+<section id="adjustmentPage" class="page-section">
+
+    <div class="page-header">
+
+        <div>
+            <span class="page-kicker">INVENTORY ADJUSTMENT</span>
+
+            <h1>Penyesuaian Persediaan</h1>
+
+            <p>
+                Catat barang yang rusak atau expired dan sesuaikan
+                persediaan berdasarkan metode FIFO.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FORM PENYESUAIAN
+    ================================================== -->
+
+    <div class="section-card adjustment-form-card">
+
+        <div class="card-header">
+
+            <div>
+                <span class="card-kicker">
+                    BARANG RUSAK & EXPIRED
+                </span>
+
+                <h2>
+                    Input Penyesuaian Persediaan
+                </h2>
+
+                <p>
+                    Biaya kerugian akan dihitung otomatis berdasarkan
+                    layer FIFO yang digunakan.
+                </p>
+            </div>
+
+        </div>
+
+
+        <form id="inventoryAdjustmentForm">
+
+            <div class="form-grid">
+
+                <!-- PRODUK -->
+
+                <div class="form-group">
+
+                    <label for="adjustmentProductInput">
+                        Produk
+                    </label>
+
+                    <select
+                        id="adjustmentProductInput"
+                        required
+                    >
+
+                        <option value="">
+                            Pilih Produk
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- TANGGAL -->
+
+                <div class="form-group">
+
+                    <label for="adjustmentDateInput">
+                        Tanggal Penyesuaian
+                    </label>
+
+                    <input
+                        type="date"
+                        id="adjustmentDateInput"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- JENIS -->
+
+                <div class="form-group">
+
+                    <label for="adjustmentTypeInput">
+                        Jenis Penyesuaian
+                    </label>
+
+                    <select
+                        id="adjustmentTypeInput"
+                        required
+                    >
+
+                        <option value="">
+                            Pilih Jenis
+                        </option>
+
+                        <option value="expired">
+                            Expired
+                        </option>
+
+                        <option value="damaged">
+                            Rusak
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- JUMLAH -->
+
+                <div class="form-group">
+
+                    <label for="adjustmentQuantityInput">
+                        Qty Produk
+                    </label>
+
+                    <input
+                        type="number"
+                        id="adjustmentQuantityInput"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="Masukkan jumlah"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CATATAN -->
+
+                <div class="form-group form-group-full">
+
+                    <label for="adjustmentNotesInput">
+                        Catatan
+                    </label>
+
+                    <textarea
+                        id="adjustmentNotesInput"
+                        rows="3"
+                        placeholder="Contoh: Produk rusak karena kemasan bocor."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMASI FIFO -->
+
+            <div class="adjustment-info-box">
+
+                <strong>
+                    Perhitungan FIFO
+                </strong>
+
+                <span>
+                    Harga perolehan dan total kerugian akan dihitung
+                    otomatis oleh sistem berdasarkan layer FIFO.
+                </span>
+
+            </div>
+
+
+            <!-- ACTION -->
+
+            <div class="modal-actions adjustment-actions">
+
+                <button
+                    type="reset"
+                    class="btn-secondary"
+                    id="resetInventoryAdjustmentButton"
+                >
+                    Reset
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                    id="saveInventoryAdjustmentButton"
+                >
+                    Simpan Penyesuaian
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- =================================================
+         RIWAYAT PENYESUAIAN
+    ================================================== -->
+
+    <div class="section-card adjustment-history-card">
+
+        <div class="card-header">
+
+            <div>
+                <span class="card-kicker">
+                    RIWAYAT PENYESUAIAN
+                </span>
+
+                <h2>
+                    Daftar Penyesuaian Persediaan
+                </h2>
+
+                <p>
+                    Riwayat barang rusak dan expired yang telah dicatat.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="data-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>No.</th>
+
+                        <th>No. Penyesuaian</th>
+
+                        <th>Tanggal</th>
+
+                        <th>Produk</th>
+
+                        <th>Jenis</th>
+
+                        <th>Qty</th>
+
+                        <th>Total Kerugian</th>
+
+                        <th>Jurnal</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="inventoryAdjustmentTableBody">
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="empty-state"
+                        >
+                            Belum ada penyesuaian persediaan.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     JURNAL
+================================================== -->
+
+<section
+    id="journalPage"
+    class="page-section"
+>
+
+    <!-- =================================================
+         PAGE HEADER
+    ================================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <span class="page-kicker">
+                AKUNTANSI
+            </span>
+
+            <h1>
+                Jurnal
+            </h1>
+
+            <p>
+                Pencatatan transaksi keuangan berdasarkan
+                sistem persediaan perpetual dan metode FIFO.
+            </p>
+
+        </div>
+
+        <div class="page-header-actions">
+
+            <button
+                type="button"
+                class="btn-secondary"
+                id="refreshJournalButton"
+            >
+                ↻ Refresh
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         JOURNAL SUMMARY
+    ================================================== -->
+
+    <div class="journal-summary-grid">
+
+
+        <!-- TOTAL TRANSAKSI -->
+
+        <div class="journal-summary-card journal-summary-purple">
+
+            <div class="journal-summary-icon">
+                ≡
+            </div>
+
+            <div class="journal-summary-content">
+
+                <span>
+                    TOTAL TRANSAKSI
+                </span>
+
+                <strong id="journalTotalTransactions">
+                    0
+                </strong>
+
+                <small>
+                    Transaksi tercatat
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOTAL DEBIT -->
+
+        <div class="journal-summary-card journal-summary-green">
+
+            <div class="journal-summary-icon">
+                D
+            </div>
+
+            <div class="journal-summary-content">
+
+                <span>
+                    TOTAL DEBIT
+                </span>
+
+                <strong id="journalTotalDebit">
+                    Rp0
+                </strong>
+
+                <small>
+                    Jumlah debit jurnal
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOTAL KREDIT -->
+
+        <div class="journal-summary-card journal-summary-yellow">
+
+            <div class="journal-summary-icon">
+                K
+            </div>
+
+            <div class="journal-summary-content">
+
+                <span>
+                    TOTAL KREDIT
+                </span>
+
+                <strong id="journalTotalCredit">
+                    Rp0
+                </strong>
+
+                <small>
+                    Jumlah kredit jurnal
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         JOURNAL FILTER
+    ================================================== -->
+
+    <div class="section-card journal-filter-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    FILTER
+                </span>
+
+                <h2>
+                    Daftar Jurnal
+                </h2>
+
+                <p>
+                    Gunakan filter untuk melihat transaksi
+                    jurnal berdasarkan periode atau jenis transaksi.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="journal-filter-grid">
+
+
+            <!-- TANGGAL MULAI -->
+
+            <div class="form-group">
+
+                <label for="journalStartDate">
+                    Dari Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="journalStartDate"
+                >
+
+            </div>
+
+
+            <!-- TANGGAL AKHIR -->
+
+            <div class="form-group">
+
+                <label for="journalEndDate">
+                    Sampai Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="journalEndDate"
+                >
+
+            </div>
+
+
+            <!-- JENIS TRANSAKSI -->
+
+            <div class="form-group">
+
+                <label for="journalTypeFilter">
+                    Jenis Transaksi
+                </label>
+
+                <select
+                    id="journalTypeFilter"
+                >
+
+                    <option value="">
+                        Semua Transaksi
+                    </option>
+
+                    <option value="purchase">
+                        Pembelian
+                    </option>
+
+                    <option value="sale">
+                        Penjualan
+                    </option>
+
+                    <option value="adjustment">
+                        Penyesuaian
+                    </option>
+
+                    <option value="return_purchase">
+                        Retur Pembelian
+                    </option>
+
+                    <option value="return_sale">
+                        Retur Penjualan
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TOMBOL FILTER -->
+
+            <div class="journal-filter-actions">
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    id="applyJournalFilterButton"
+                >
+                    Tampilkan
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="resetJournalFilterButton"
+                >
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         JOURNAL TABLE
+    ================================================== -->
+
+    <div class="section-card journal-table-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    GENERAL JOURNAL
+                </span>
+
+                <h2>
+                    Jurnal Umum
+                </h2>
+
+                <p>
+                    Setiap transaksi harus memiliki total
+                    debit dan kredit yang seimbang.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table class="data-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Tanggal
+                        </th>
+
+                        <th>
+                            No. Transaksi
+                        </th>
+
+                        <th>
+                            Jenis
+                        </th>
+
+                        <th>
+                            Akun
+                        </th>
+
+                        <th>
+                            Keterangan
+                        </th>
+
+                        <th>
+                            Debit
+                        </th>
+
+                        <th>
+                            Kredit
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="journalTableBody">
+
+                    <tr>
+
+                        <td colspan="7">
+
+                            <div class="empty-state">
+
+                                <strong>
+                                    Belum ada jurnal
+                                </strong>
+
+                                <span>
+                                    Jurnal akan muncul otomatis
+                                    setelah transaksi pembelian
+                                    atau penjualan tercatat.
+                                </span>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         JOURNAL INFORMATION
+    ================================================== -->
+
+    <div class="section-card journal-info-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    SISTEM PENCATATAN
+                </span>
+
+                <h2>
+                    Pencatatan Perpetual + FIFO
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="journal-info-content">
+
+
+            <!-- PEMBELIAN -->
+
+            <div class="journal-info-item">
+
+                <span class="journal-info-number">
+                    01
+                </span>
+
+                <div>
+
+                    <strong>
+                        Pembelian Persediaan
+                    </strong>
+
+                    <p>
+                        Persediaan didebit dan Kas atau
+                        Utang Usaha dikredit sesuai transaksi.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PENJUALAN -->
+
+            <div class="journal-info-item">
+
+                <span class="journal-info-number">
+                    02
+                </span>
+
+                <div>
+
+                    <strong>
+                        Penjualan
+                    </strong>
+
+                    <p>
+                        Penjualan dicatat bersamaan dengan
+                        pengurangan persediaan secara perpetual.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- HPP -->
+
+            <div class="journal-info-item">
+
+                <span class="journal-info-number">
+                    03
+                </span>
+
+                <div>
+
+                    <strong>
+                        HPP FIFO
+                    </strong>
+
+                    <p>
+                        HPP dihitung berdasarkan layer FIFO
+                        yang digunakan saat penjualan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     REPORTS
+================================================== -->
+
+<section
+    id="reportsPage"
+    class="page-section"
+>
+
+    <!-- =============================================
+         HEADER LAPORAN
+    ============================================== -->
+
+    <div class="page-header">
+
+        <div>
+
+            <span class="page-kicker">
+                LAPORAN
+            </span>
+
+            <h1>
+                Laporan
+            </h1>
+
+            <p>
+                Pilih jenis laporan yang ingin ditampilkan.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =============================================
+         REPORT MENU
+    ============================================== -->
+
+    <div
+        id="reportMenu"
+        class="report-grid"
+    >
+
+
+        <!-- REPORT 01 -->
+
+        <button
+            type="button"
+            class="report-card report-card-button"
+            id="openHppReportButton"
+        >
+
+            <span>
+                REPORT 01
+            </span>
+
+            <h3>
+                Laporan HPP
+            </h3>
+
+            <p>
+                Menampilkan perhitungan harga
+                pokok penjualan berdasarkan FIFO.
+            </p>
+
+        </button>
+
+
+        <!-- REPORT 02 -->
+
+        <button
+            type="button"
+            class="report-card report-card-button"
+            id="openSalesReportButton"
+        >
+
+            <span>
+                REPORT 02
+            </span>
+
+            <h3>
+                Laporan Penjualan
+            </h3>
+
+            <p>
+                Menampilkan ringkasan transaksi
+                penjualan dalam periode tertentu.
+            </p>
+
+        </button>
+
+
+        <!-- REPORT 03 -->
+
+        <button
+            type="button"
+            class="report-card report-card-button"
+            id="openProfitLossReportButton"
+        >
+
+            <span>
+                REPORT 03
+            </span>
+
+            <h3>
+                Laporan Laba Rugi
+            </h3>
+
+            <p>
+                Menampilkan pendapatan, HPP,
+                dan laba bersih perusahaan.
+            </p>
+
+        </button>
+
+    </div>
+
+
+    <!-- =============================================
+         HPP FIFO REPORT
+    ============================================== -->
+
+    <div
+        id="hppReportDetail"
+        class="report-detail"
+        style="display: none;"
+    >
+
+        <!-- HEADER -->
+
+        <div class="report-detail-header">
+
+            <div>
+
+                <span class="page-kicker">
+                    REPORT 01
+                </span>
+
+                <h2>
+                    Laporan HPP FIFO
+                </h2>
+
+                <p>
+                    Rincian harga pokok penjualan berdasarkan
+                    pengambilan layer persediaan dengan metode FIFO.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn-secondary"
+                id="backToReportMenuButton"
+            >
+                ← Kembali
+            </button>
+
+        </div>
+
+
+        <!-- =========================================
+             FILTER
+        ========================================== -->
+
+        <div class="section-card hpp-filter-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-kicker">
+                        FILTER LAPORAN
+                    </span>
+
+                    <h2>
+                        Periode dan Produk
+                    </h2>
+
+                    <p>
+                        Pilih periode dan produk untuk menampilkan
+                        rincian HPP berdasarkan FIFO.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="hpp-filter-grid">
+
+                <!-- DARI TANGGAL -->
+
+                <div class="form-group">
+
+                    <label
+                        for="hppStartDate"
+                    >
+                        Dari Tanggal
+                    </label>
+
+                    <input
+                        type="date"
+                        id="hppStartDate"
+                    >
+
+                </div>
+
+
+                <!-- SAMPAI TANGGAL -->
+
+                <div class="form-group">
+
+                    <label
+                        for="hppEndDate"
+                    >
+                        Sampai Tanggal
+                    </label>
+
+                    <input
+                        type="date"
+                        id="hppEndDate"
+                    >
+
+                </div>
+
+
+                <!-- PRODUK -->
+
+                <div class="form-group">
+
+                    <label
+                        for="hppProductFilter"
+                    >
+                        Produk
+                    </label>
+
+                    <select
+                        id="hppProductFilter"
+                    >
+
+                        <option value="">
+                            Semua produk
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <div class="hpp-filter-actions">
+
+                    <button
+                        type="button"
+                        class="btn-primary"
+                        id="applyHppFilterButton"
+                    >
+                        Tampilkan
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        id="resetHppFilterButton"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUMMARY HPP -->
+<div class="hpp-summary-grid">
+
+    <!-- TOTAL QTY TERJUAL -->
+    <div class="hpp-summary-card hpp-summary-quantity">
+
+        <div class="hpp-summary-content">
+
+            <span>TOTAL QTY TERJUAL</span>
+
+            <div class="hpp-summary-value-row">
+                <div class="hpp-summary-icon">▣</div>
+                <strong id="hppTotalQuantity">0 unit</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOTAL PENJUALAN -->
+    <div class="hpp-summary-card hpp-summary-sales">
+
+        <div class="hpp-summary-content">
+
+            <span>TOTAL PENJUALAN</span>
+
+            <div class="hpp-summary-value-row">
+                <div class="hpp-summary-icon">Rp</div>
+                <strong id="hppTotalSales">Rp0</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOTAL HPP FIFO -->
+    <div class="hpp-summary-card hpp-summary-cogs">
+
+        <div class="hpp-summary-content">
+
+            <span>TOTAL HPP FIFO</span>
+
+            <div class="hpp-summary-value-row">
+                <div class="hpp-summary-icon">≋</div>
+                <strong id="hppTotalCogs">Rp0</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- LABA KOTOR -->
+    <div class="hpp-summary-card hpp-summary-profit">
+
+        <div class="hpp-summary-content">
+
+            <span>LABA KOTOR</span>
+
+            <div class="hpp-summary-value-row">
+                <div class="hpp-summary-icon">↗</div>
+                <strong id="hppGrossProfit">Rp0</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+        <!-- =========================================
+             HPP TABLE
+        ========================================== -->
+
+        <div class="section-card hpp-table-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-kicker">
+                        DETAIL HPP
+                    </span>
+
+                    <h2>
+                        Rincian HPP FIFO
+                    </h2>
+
+                    <p>
+                        Setiap baris menunjukkan pengambilan
+                        persediaan dari layer FIFO.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table
+                    class="data-table hpp-data-table"
+                >
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Tanggal
+                            </th>
+
+                            <th>
+                                No. Penjualan
+                            </th>
+
+                            <th>
+                                Produk
+                            </th>
+
+                            <th>
+                                Qty
+                            </th>
+
+                            <th>
+                                Harga Jual
+                            </th>
+
+                            <th>
+                                HPP FIFO
+                            </th>
+
+                            <th>
+                                Total HPP
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="hppReportTableBody"
+                    >
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                            >
+
+                                <div class="empty-state">
+
+                                    <strong>
+                                        Belum ada laporan
+                                    </strong>
+
+                                    <span>
+                                        Klik "Tampilkan" untuk
+                                        melihat rincian HPP FIFO.
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             INFORMATION
+        ========================================== -->
+
+        <div class="section-card hpp-info-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-kicker">
+                        INFORMASI
+                    </span>
+
+                    <h2>
+                        Metode FIFO
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-info-content">
+
+                <p>
+                    Laporan ini menggunakan metode FIFO
+                    (First In, First Out). Setiap penjualan
+                    mengambil persediaan berdasarkan layer
+                    pembelian yang masuk terlebih dahulu.
+                </p>
+
+                <p>
+                    Apabila satu transaksi penjualan mengambil
+                    persediaan dari beberapa layer, setiap layer
+                    ditampilkan sebagai baris terpisah.
+                </p>
+
+                <p>
+                    Tanggal, nomor penjualan, dan produk hanya
+                    ditampilkan pada baris pertama dari satu
+                    transaksi agar laporan lebih mudah dibaca.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+<!-- =========================================================
+     REPORT 02 - LAPORAN PENJUALAN
+========================================================= -->
+
+<div
+    id="salesReportDetail"
+    class="report-detail"
+    style="display: none;"
+>
+
+    <!-- HEADER -->
+    <div class="report-detail-header">
+
+        <div>
+
+            <span class="page-kicker">
+                REPORT 02
+            </span>
+
+            <h2>
+                Laporan Penjualan
+            </h2>
+
+            <p>
+                Menampilkan transaksi penjualan berdasarkan periode,
+                pelanggan, dan produk.
+            </p>
+
+        </div>
+
+        <button
+            type="button"
+            class="btn-secondary"
+            id="backToReportMenuFromSalesButton"
+        >
+            ← Kembali
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         FILTER
+    ====================================================== -->
+
+    <div class="section-card sales-report-filter-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    FILTER LAPORAN
+                </span>
+
+                <h2>
+                    Periode dan Produk
+                </h2>
+
+                <p>
+                    Gunakan filter untuk menampilkan transaksi
+                    penjualan tertentu.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="sales-report-filter-grid">
+
+            <!-- DARI TANGGAL -->
+            <div class="form-group">
+
+                <label for="salesReportStartDate">
+                    Dari Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="salesReportStartDate"
+                >
+
+            </div>
+
+
+            <!-- SAMPAI TANGGAL -->
+            <div class="form-group">
+
+                <label for="salesReportEndDate">
+                    Sampai Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="salesReportEndDate"
+                >
+
+            </div>
+
+
+            <!-- PELANGGAN -->
+            <div class="form-group">
+
+                <label for="salesReportCustomerFilter">
+                    Pelanggan
+                </label>
+
+                <select
+                    id="salesReportCustomerFilter"
+                >
+
+                    <option value="">
+                        Semua pelanggan
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- PRODUK -->
+            <div class="form-group">
+
+                <label for="salesReportProductFilter">
+                    Produk
+                </label>
+
+                <select
+                    id="salesReportProductFilter"
+                >
+
+                    <option value="">
+                        Semua produk
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- BUTTON -->
+            <div class="sales-report-filter-actions">
+
+                <button
+                    type="button"
+                    class="btn-primary"
+                    id="applySalesReportFilterButton"
+                >
+                    Tampilkan
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="resetSalesReportFilterButton"
+                >
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SUMMARY
+    ====================================================== -->
+
+    <div class="sales-report-summary-grid">
+
+        <!-- TOTAL TRANSAKSI -->
+        <div class="sales-report-summary-card">
+
+            <span>
+                TOTAL TRANSAKSI
+            </span>
+
+            <strong id="salesReportTotalTransactions">
+                0
+            </strong>
+
+            <small>
+                transaksi penjualan
+            </small>
+
+        </div>
+
+
+        <!-- TOTAL QUANTITY -->
+        <div class="sales-report-summary-card">
+
+            <span>
+                TOTAL QUANTITY
+            </span>
+
+            <strong id="salesReportTotalQuantity">
+                0
+            </strong>
+
+            <small>
+                unit terjual
+            </small>
+
+        </div>
+
+
+        <!-- TOTAL PENJUALAN -->
+        <div class="sales-report-summary-card">
+
+            <span>
+                TOTAL PENJUALAN
+            </span>
+
+            <strong id="salesReportTotalSales">
+                Rp0
+            </strong>
+
+            <small>
+                nilai penjualan
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TABLE
+    ====================================================== -->
+
+    <div class="section-card sales-report-table-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    DATA PENJUALAN
+                </span>
+
+                <h2>
+                    Daftar Transaksi Penjualan
+                </h2>
+
+                <p>
+                    Menampilkan transaksi penjualan sesuai filter
+                    yang dipilih.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table
+                class="data-table sales-report-data-table"
+            >
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Tanggal
+                        </th>
+
+                        <th>
+                            No. Penjualan
+                        </th>
+
+                        <th>
+                            Pelanggan
+                        </th>
+
+                        <th>
+                            Produk
+                        </th>
+
+                        <th>
+                            Qty
+                        </th>
+
+                        <th>
+                            Harga Jual
+                        </th>
+
+                        <th>
+                            Subtotal
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="salesReportTableBody"
+                >
+
+                    <tr>
+
+                        <td colspan="7">
+
+                            <div class="empty-state">
+
+                                <strong>
+                                    Belum ada data penjualan
+                                </strong>
+
+                                <span>
+                                    Gunakan filter atau tampilkan
+                                    seluruh transaksi penjualan.
+                                </span>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         INFO
+    ====================================================== -->
+
+    <div class="section-card sales-report-info-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    INFORMASI
+                </span>
+
+                <h2>
+                    Tentang Laporan Penjualan
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="report-info-content">
+
+            <p>
+                Laporan ini menampilkan transaksi penjualan
+                berdasarkan data pada tabel penjualan dan
+                detail penjualan.
+            </p>
+
+            <p>
+                Nilai subtotal menggunakan nilai yang tersimpan
+                pada transaksi penjualan sehingga laporan tetap
+                mengikuti data transaksi yang sebenarnya.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     REPORT 03 - LAPORAN LABA RUGI
+========================================================= -->
+
+<div
+    id="profitLossReportDetail"
+    class="report-detail"
+    style="display: none;"
+>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="report-detail-header">
+
+        <div>
+
+            <span class="page-kicker">
+                REPORT 03
+            </span>
+
+            <h2>
+                Laporan Laba Rugi
+            </h2>
+
+            <p>
+                Menampilkan laporan laba rugi berdasarkan periode
+                yang dipilih.
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn-secondary"
+            id="backToReportMenuFromProfitLossButton"
+        >
+            ← Kembali
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         FILTER PERIODE
+    ====================================================== -->
+
+    <div class="section-card profit-loss-filter-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    PERIODE LAPORAN
+                </span>
+
+                <h2>
+                    Pilih Periode
+                </h2>
+
+                <p>
+                    Tentukan periode laporan laba rugi yang ingin
+                    ditampilkan.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="profit-loss-filter-grid">
+
+            <!-- JENIS PERIODE -->
+            <div class="form-group">
+
+                <label for="profitLossPeriodType">
+                    Jenis Periode
+                </label>
+
+                <select
+                    id="profitLossPeriodType"
+                >
+
+                    <option value="monthly">
+                        Bulanan
+                    </option>
+
+                    <option value="quarterly">
+                        3 Bulan
+                    </option>
+
+                    <option value="semester">
+                        6 Bulan
+                    </option>
+
+                    <option value="yearly">
+                        1 Tahun
+                    </option>
+
+                    <option value="custom">
+                        Custom
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- BULAN -->
+            <div
+                class="form-group"
+                id="profitLossMonthGroup"
+            >
+
+                <label for="profitLossMonth">
+                    Bulan
+                </label>
+
+                <input
+                    type="month"
+                    id="profitLossMonth"
+                >
+
+            </div>
+
+
+            <!-- TANGGAL MULAI CUSTOM -->
+            <div
+                class="form-group"
+                id="profitLossStartDateGroup"
+                style="display: none;"
+            >
+
+                <label for="profitLossStartDate">
+                    Dari Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="profitLossStartDate"
+                >
+
+            </div>
+
+
+            <!-- TANGGAL AKHIR CUSTOM -->
+            <div
+                class="form-group"
+                id="profitLossEndDateGroup"
+                style="display: none;"
+            >
+
+                <label for="profitLossEndDate">
+                    Sampai Tanggal
+                </label>
+
+                <input
+                    type="date"
+                    id="profitLossEndDate"
+                >
+
+            </div>
+
+
+            <!-- BUTTON -->
+<div class="profit-loss-filter-actions">
+
+    <button
+        type="button"
+        class="btn-primary"
+        id="applyProfitLossFilterButton"
+    >
+        Tampilkan
+    </button>
+
+    <button
+        type="button"
+        class="secondary-button"
+        id="resetProfitLossFilterButton"
+    >
+        Reset
+    </button>
+
+    <button
+        type="button"
+        class="btn-download-pdf"
+        id="downloadProfitLossPdfButton"
+    >
+        ↓ Download PDF
+    </button>
+
+</div>
+
+        </div>
+
+    </div>
+
+    
+<!-- =====================================================
+     LAPORAN LABA RUGI
+===================================================== -->
+
+<div
+    class="section-card profit-loss-report-paper"
+    id="profitLossReportPaper"
+>
+
+    <!-- =================================================
+         JUDUL LAPORAN
+    ================================================== -->
+
+    <div class="profit-loss-report-heading">
+
+        <div class="profit-loss-report-title">
+
+            <h1>
+                LAPORAN LABA RUGI
+            </h1>
+
+            <h2>
+                DISTRIBUTOR MAKANAN/MINUMAN
+            </h2>
+
+            <p id="profitLossReportPeriodText">
+                Periode laporan
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ISI LAPORAN
+    ================================================== -->
+
+    <div class="profit-loss-report-body">
+
+
+        <!-- PENJUALAN -->
+
+        <div class="profit-loss-section">
+
+            <div class="profit-loss-section-title">
+                PENJUALAN
+            </div>
+
+            <div class="profit-loss-line">
+
+                <span>
+                    Penjualan
+                </span>
+
+                <strong
+                    id="profitLossSalesAmount"
+                >
+                    Rp0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- HPP -->
+
+        <div class="profit-loss-section">
+
+            <div class="profit-loss-section-title">
+                HARGA POKOK PENJUALAN
+            </div>
+
+            <div class="profit-loss-line">
+
+                <span>
+                    Harga Pokok Penjualan (FIFO)
+                </span>
+
+                <strong
+                    id="profitLossCogsAmount"
+                >
+                    Rp0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PEMBATAS -->
+
+        <div class="profit-loss-divider">
+        </div>
+
+
+        <!-- LABA KOTOR -->
+
+        <div
+            class="profit-loss-line profit-loss-gross-profit"
+        >
+
+            <span>
+                LABA KOTOR
+            </span>
+
+            <strong
+                id="profitLossGrossProfitAmount"
+            >
+                Rp0
+            </strong>
+
+        </div>
+
+
+        <!-- MARGIN LABA KOTOR -->
+
+        <div
+            class="profit-loss-line profit-loss-margin-line"
+        >
+
+            <span>
+                Margin Laba Kotor
+            </span>
+
+            <strong
+                id="profitLossGrossMargin"
+            >
+                0,00%
+            </strong>
+
+        </div>
+
+
+        <!-- =================================================
+             KERUGIAN PERSEDIAAN
+        ================================================== -->
+
+        <div
+            class="profit-loss-section profit-loss-inventory-loss-section"
+        >
+
+            <div class="profit-loss-section-title">
+                KERUGIAN PERSEDIAAN
+            </div>
+
+            <div class="profit-loss-line">
+
+                <span>
+                    Barang Rusak & Expired
+                </span>
+
+                <strong
+                    id="profitLossInventoryLossAmount"
+                >
+                    Rp0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PEMBATAS -->
+
+        <div class="profit-loss-divider">
+        </div>
+
+
+        <!-- LABA SETELAH KERUGIAN PERSEDIAAN -->
+
+        <div
+            class="profit-loss-line profit-loss-final-profit"
+        >
+
+            <span>
+                LABA SETELAH KERUGIAN PERSEDIAAN
+            </span>
+
+            <strong
+                id="profitLossFinalProfitAmount"
+            >
+                Rp0
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         TIMESTAMP
+    ================================================== -->
+
+    <div class="profit-loss-report-footer">
+
+        <span>
+            Laporan dibuka pada
+        </span>
+
+        <strong
+            id="profitLossOpenedAt"
+        >
+            -
+        </strong>
+
+    </div>
+
+</div>
+
+
+    <!-- =====================================================
+         INFORMASI
+    ====================================================== -->
+
+    <div class="section-card profit-loss-info-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <span class="card-kicker">
+                    INFORMASI
+                </span>
+
+                <h2>
+                    Tentang Laporan Laba Rugi
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="report-info-content">
+
+            <p>
+                Laporan ini menghitung laba kotor berdasarkan
+                penjualan dan Harga Pokok Penjualan (HPP) dengan
+                metode FIFO.
+            </p>
+
+            <p>
+                Pada versi sederhana ini, laporan belum memasukkan
+                beban operasional atau pendapatan dan beban lainnya.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- =============================================
+         TEMPORARY PLACEHOLDER
+         REPORT LAIN AKAN DIBUAT BERIKUTNYA
+    ============================================== -->
+
+    <div
+        id="otherReportPlaceholder"
+        style="display: none;"
+    >
+
+        <!--
+            Laporan Penjualan,
+            Laporan Pembelian,
+            dan Laporan Laba Rugi
+            akan dibuat setelah
+            Laporan HPP FIFO selesai.
+        -->
+
+    </div>
+
+</section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         PRODUCT MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="productModal"
+    >
+
+        <div class="modal-card">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-kicker">
+                        MASTER DATA
+                    </span>
+
+                    <h2 id="productModalTitle">
+                        Tambah Produk
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeProductModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="productForm">
+
+                <div class="form-grid">
+
+
+                    <!-- SKU -->
+
+                    <div class="form-group">
+
+                        <label for="productSku">
+                            SKU
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productSku"
+                            placeholder="Contoh: SKU-001"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- NAMA -->
+
+                    <div class="form-group">
+
+                        <label for="productName">
+                            Nama Produk
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            placeholder="Nama produk"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- KATEGORI -->
+
+                    <div class="form-group">
+
+                        <label for="productCategory">
+                            Kategori
+                        </label>
+
+                        <select
+                            id="productCategory"
+                            required
+                        >
+
+                            <option value="">
+                                Pilih kategori
+                            </option>
+
+                            <option value="Makanan">
+                                Makanan
+                            </option>
+
+                            <option value="Minuman">
+                                Minuman
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- SATUAN -->
+
+                    <div class="form-group">
+
+                        <label for="productUnit">
+                            Satuan
+                        </label>
+
+                        <input
+                            type="text"
+                            id="productUnit"
+                            placeholder="Contoh: pcs / box"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- HARGA BELI -->
+
+                    <div class="form-group">
+
+                        <label for="productPurchasePrice">
+                            Harga Beli
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productPurchasePrice"
+                            min="0"
+                            placeholder="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- HARGA JUAL -->
+
+                    <div class="form-group">
+
+                        <label for="productSellingPrice">
+                            Harga Jual
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productSellingPrice"
+                            min="0"
+                            placeholder="0"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- MINIMUM STOCK -->
+
+                    <div class="form-group">
+
+                        <label for="productMinStock">
+                            Minimum Stok
+                        </label>
+
+                        <input
+                            type="number"
+                            id="productMinStock"
+                            min="0"
+                            placeholder="0"
+                            required
+                        >
+
+                        <small>
+                            Digunakan sebagai batas
+                            peringatan stok rendah.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-note">
+
+                    Sistem akan menggunakan minimum stok
+                    sebagai batas untuk menampilkan
+                    produk pada bagian Warning Stock.
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelProductModal"
+                    >
+                        Batal
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                        id="saveProductButton"
+                    >
+                        Simpan Produk
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PROFILE MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="profileModal"
+    >
+
+        <div class="modal-card profile-modal-card">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="modal-kicker">
+                        ACCOUNT
+                    </span>
+
+                    <h2>
+                        Profil Pengguna
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeProfileModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="profileForm">
+
+                <div class="profile-avatar-large">
+
+                    <span id="profileAvatar">
+                        U
+                    </span>
+
+                </div>
+
+
+                <!-- NAMA -->
+
+                <div class="form-group">
+
+                    <label for="profileFullName">
+                        Nama Lengkap
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileFullName"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="profileEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="profileEmail"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- ROLE -->
+
+                <div class="form-group">
+
+                    <label for="profileRole">
+                        Role
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileRole"
+                        readonly
+                    >
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelProfileModal"
+                    >
+                        Tutup
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    
+    <!-- SUPPLIER MODAL -->
+<div id="supplierModal" class="modal-overlay">
+
+    <div class="modal-card supplier-modal-card">
+
+        <div class="modal-header">
+
+            <div>
+                <h2 id="supplierModalTitle">Tambah Supplier</h2>
+
+                <p>
+                    Tambahkan data supplier baru ke sistem.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeSupplierModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="supplierForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="supplierCode">
+                        Kode Supplier
+                    </label>
+
+                    <input
+                        type="text"
+                        id="supplierCode"
+                        name="supplierCode"
+                        placeholder="SUP-001"
+                        readonly
+                    >
+
+                    <small>
+                        Kode dibuat otomatis oleh sistem.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="supplierName">
+                        Nama Supplier
+                    </label>
+
+                    <input
+                        type="text"
+                        id="supplierName"
+                        name="supplierName"
+                        placeholder="Contoh: PT Maju Jaya"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="supplierPhone">
+                        No. Telepon
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="supplierPhone"
+                        name="supplierPhone"
+                        placeholder="08xxxxxxxxxx"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="supplierEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="supplierEmail"
+                        name="supplierEmail"
+                        placeholder="supplier@email.com"
+                    >
+
+                </div>
+
+
+                <div class="form-group supplier-address-group">
+
+                    <label for="supplierAddress">
+                        Alamat
+                    </label>
+
+                    <textarea
+                        id="supplierAddress"
+                        name="supplierAddress"
+                        rows="4"
+                        placeholder="Masukkan alamat supplier..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="cancelSupplierModal"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                    id="saveSupplierButton"
+                >
+                    Simpan Supplier
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+    <!-- =====================================================
+         TOAST
+    ====================================================== -->
+
+    <div
+        class="toast"
+        id="toast"
+    ></div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <!-- SUPABASE -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- CHART.JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <!-- Library untuk membuat PDF --> 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js"></script>
+
+
+    <!-- CONFIG -->
+
+    <script src="../js/config.js"></script>
+
+
+    <!-- AUTH -->
+
+    <script src="../js/auth.js"></script>
+
+
+    <!-- APP -->
+
+    <script src="../js/app.js"></script>
+
+    <!-- =========================================================
+     CUSTOMER MODAL
+========================================================= -->
+
+<div id="customerModal" class="modal-overlay">
+
+    <div class="modal-card customer-modal-card">
+
+        <div class="modal-header">
+
+            <div>
+                <h2 id="customerModalTitle">Tambah Pelanggan</h2>
+
+                <p>
+                    Tambahkan data pelanggan baru ke sistem.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeCustomerModal"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="customerForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="customerCode">
+                        Kode Pelanggan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerCode"
+                        name="customerCode"
+                        placeholder="PLG-001"
+                        readonly
+                    >
+
+                    <small>
+                        Kode dibuat otomatis oleh sistem.
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerName">
+                        Nama Pelanggan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        name="customerName"
+                        placeholder="Contoh: Toko Maju Jaya"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerPhone">
+                        No. Telepon
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        name="customerPhone"
+                        placeholder="08xxxxxxxxxx"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="customerEmail"
+                        name="customerEmail"
+                        placeholder="pelanggan@email.com"
+                    >
+
+                </div>
+
+
+                <div class="form-group customer-address-group">
+
+                    <label for="customerAddress">
+                        Alamat
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        name="customerAddress"
+                        rows="4"
+                        placeholder="Masukkan alamat pelanggan..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="cancelCustomerModal"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                    id="saveCustomerButton"
+                >
+                    Simpan Pelanggan
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

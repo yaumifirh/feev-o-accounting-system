@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Login - FIFO Accounting System
+    </title>
+
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- LOGIN CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/login.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="login-page">
+
+
+    <div class="login-card">
+
+
+        <!-- =================================================
+             LOGO
+        ================================================== -->
+
+        <div class="login-logo-wrapper">
+
+
+            <img
+                src="../assets/logo.png"
+                alt="FIFO Accounting System"
+                class="login-logo"
+                onerror="
+                    this.style.display='none';
+                    document.getElementById('loginLogoFallback').style.display='flex';
+                "
+            >
+
+
+            <div
+                id="loginLogoFallback"
+                class="login-logo-fallback"
+            >
+                F
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             BRAND
+        ================================================== -->
+
+        <div class="login-brand">
+
+            <h1>
+                FIFO ACCOUNTING SYSTEM
+            </h1>
+
+            <p>
+                Sistem Akuntansi Persediaan Berbasis FIFO
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             HEADING
+        ================================================== -->
+
+        <div class="login-heading">
+
+            <span>
+                ACCOUNT ACCESS
+            </span>
+
+            <h2>
+                Selamat Datang
+            </h2>
+
+            <p>
+                Silakan masuk untuk mengakses
+                sistem akuntansi.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM
+        ================================================== -->
+
+        <form
+            id="loginForm"
+            class="login-form"
+        >
+
+
+            <div class="form-group">
+
+
+                <label for="email">
+                    Email
+                </label>
+
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="contoh@email.com"
+                    autocomplete="email"
+                    required
+                >
+
+
+            </div>
+
+
+            <div class="form-group">
+
+
+                <label for="password">
+                    Password
+                </label>
+
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Masukkan password"
+                    autocomplete="current-password"
+                    required
+                >
+
+
+            </div>
+
+
+            <div
+                id="loginMessage"
+                class="login-message"
+            >
+            </div>
+
+
+            <button
+                type="submit"
+                id="loginButton"
+                class="login-button"
+            >
+                Login
+            </button>
+
+
+        </form>
+
+
+        <!-- =================================================
+             DEMO INFO
+        ================================================== -->
+
+        <div class="demo-information">
+
+            <strong>
+                Demo System
+            </strong>
+
+            <span>
+                Gunakan email dan password bebas.
+                Tidak perlu membuat akun di Supabase.
+            </span>
+
+        </div>
+
+
+        <div class="login-footer">
+
+            FIFO ACCOUNTING SYSTEM
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script src="../js/auth.js"></script>
+
+
+</body>
+
+</html>
