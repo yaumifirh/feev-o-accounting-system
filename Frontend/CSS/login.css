@@ -1,5 +1,5 @@
 /* =========================================================
-   FIFO ACCOUNTING SYSTEM
+   FEEV-O
    LOGIN PAGE
 ========================================================= */
 
@@ -16,131 +16,76 @@
     box-sizing: border-box;
 }
 
-
 html,
 body {
-
     width: 100%;
     min-height: 100%;
-
     margin: 0;
     padding: 0;
-
 }
 
-
 body {
-
     font-family: "Inter", sans-serif;
-
     background: #d7bef3;
-
     color: #303139;
-
 }
 
 
 /* =========================================================
-   PAGE
+   MAIN PAGE
 ========================================================= */
 
 .login-page {
-
     width: 100%;
     min-height: 100vh;
 
     display: flex;
-
-    align-items: center;
-
+    align-items: stretch;
     justify-content: center;
 
-    padding: 40px 20px;
+    padding: 0;
 
-}
-
-
-/* =========================================================
-   CARD
-========================================================= */
-
-.login-card {
-
-    width: 100%;
-    max-width: 450px;
-
-    background: #ffffff;
-
-    border: 1px solid #d9dade;
-
-    border-radius: 20px;
-
-    padding: 42px 42px 30px;
-
-    box-shadow:
-        0 18px 45px rgba(
-            48,
-            49,
-            57,
-            0.08
+    background:
+        linear-gradient(
+            135deg,
+            #eadcf6 0%,
+            #d8c1e8 48%,
+            #c7a9e3 100%
         );
-
 }
 
 
 /* =========================================================
-   LOGO
+   LEFT BRANDING PANEL
 ========================================================= */
 
-.login-logo-wrapper {
-
-    width: 82px;
-    height: 82px;
-
-    margin: 0 auto 18px;
+.login-brand-panel {
+    width: 52%;
+    min-height: 100vh;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
+    padding: 45px 60px;
+
+    background: #aa8ec2;
 }
 
 
-.login-logo {
+/* =========================================================
+   BRAND CONTENT
+========================================================= */
 
-    width: 82px;
-    height: 82px;
-
-    object-fit: contain;
-
-}
-
-
-.login-logo-fallback {
-
-    width: 72px;
-    height: 72px;
+.login-brand-content {
+    width: 100%;
+    max-width: 520px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    border-radius: 18px;
-
-    background: #594354;
-
-    color: #ffffff;
-
-    font-family: "Poppins", sans-serif;
-
-    font-size: 34px;
-
-    font-weight: 800;
-
+    text-align: center;
 }
 
 
@@ -149,47 +94,540 @@ body {
 ========================================================= */
 
 .login-brand {
-
     width: 100%;
-
     text-align: center;
-
 }
 
 
-.login-brand h1 {
+/* =========================================================
+   FEEV-O TITLE
+========================================================= */
 
+.login-brand h1 {
     margin: 0;
 
-    font-family: "Poppins", sans-serif;
+    font-family:
+        "Poppins",
+        sans-serif;
 
-    font-size: 21px;
-
-    line-height: 1.3;
+    font-size: 65px;
+    line-height: 1.1;
 
     font-weight: 800;
 
-    letter-spacing: -0.3px;
+    letter-spacing: -1.5px;
 
-    color: #303139;
-
+    color: #2b193f;
 }
 
 
-.login-brand p {
+/* =========================================================
+   SUBTITLE
+========================================================= */
 
-    margin: 8px 0 0;
+.login-brand-subtitle {
+    margin: 12px 0 0;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
-    font-size: 12px;
+    font-size: 25px;
+    line-height: 1.5;
+
+    font-weight: 700;
+
+    color: #49345a;
+}
+
+
+/* =========================================================
+   INVENTORY CHART CARD
+========================================================= */
+
+.login-chart-card {
+    width: 365px;
+    height: 205px;
+
+    margin: 25px auto 0;
+
+    padding: 17px 19px 14px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+
+    border:
+        1px solid
+        rgba(
+            185,
+            155,
+            216,
+            0.58
+        );
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(
+            49,
+            27,
+            72,
+            0.10
+        );
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   CHART HEADER
+========================================================= */
+
+.chart-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+}
+
+
+.chart-card-header > div:first-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.chart-card-header span {
+    font-family:
+        "Inter",
+        sans-serif;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    color: #927da0;
+}
+
+
+.chart-card-header strong {
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #49345a;
+}
+
+
+.chart-card-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: #f0e4f8;
+
+    color: #6e527e;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CHART AREA
+========================================================= */
+
+.chart-area {
+    position: relative;
+
+    width: 100%;
+    height: 105px;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    background:
+        rgba(
+            247,
+            241,
+            250,
+            0.65
+        );
+}
+
+
+.chart-grid-line {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background:
+        rgba(
+            185,
+            155,
+            216,
+            0.18
+        );
+}
+
+
+.line-one {
+    top: 25%;
+}
+
+
+.line-two {
+    top: 50%;
+}
+
+
+.line-three {
+    top: 75%;
+}
+
+
+.inventory-chart {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+.chart-fill {
+    fill: url(#chartAreaGradient);
+}
+
+
+.chart-line {
+    fill: none;
+
+    stroke: #9f7dc0;
+
+    stroke-width: 3;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+.chart-point {
+    fill: #ffffff;
+
+    stroke: #8d69ad;
+
+    stroke-width: 3;
+}
+
+
+/* =========================================================
+   CHART CAPTION
+========================================================= */
+
+.chart-caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 7px;
+}
+
+
+.chart-caption span {
+    font-family:
+        "Inter",
+        sans-serif;
+
+    font-size: 7px;
+
+    font-weight: 600;
+
+    color: #9a8ba1;
+}
+
+
+/* =========================================================
+   MINI INFORMATION CARDS
+========================================================= */
+
+.login-mini-info {
+    width: 365px;
+
+    margin: 13px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 8px;
+}
+
+
+.mini-info-card {
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        8px 9px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.48
+        );
+
+    border:
+        1px solid
+        rgba(
+            185,
+            155,
+            216,
+            0.38
+        );
+
+    border-radius: 10px;
+
+    text-align: left;
+}
+
+
+.mini-info-icon {
+    width: 25px;
+    height: 25px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: #e7d7f1;
+
+    color: #594074;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+.mini-info-card div {
+    min-width: 0;
+}
+
+
+.mini-info-card strong {
+    display: block;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    color: #49345a;
+}
+
+
+.mini-info-card small {
+    display: block;
+
+    margin-top: 2px;
+
+    font-family:
+        "Inter",
+        sans-serif;
+
+    font-size: 6px;
+
+    line-height: 1.3;
+
+    color: #8d7b96;
+}
+
+
+/* =========================================================
+   TAGLINE
+========================================================= */
+
+.login-tagline {
+    margin: 20px 0 0;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 20px;
 
     line-height: 1.5;
 
     font-weight: 700;
 
-    color: #594354;
+    font-style: italic;
 
+    letter-spacing: 0.2px;
+
+    color: #2b193f;
+}
+
+
+/* =========================================================
+   RIGHT LOGIN PANEL
+========================================================= */
+
+.login-form-panel {
+    width: 48%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 45px 65px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.20
+        );
+
+    border-left:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        );
+}
+
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #d9dade;
+
+    border-radius: 20px;
+
+    padding:
+        40px 42px 30px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(
+            49,
+            27,
+            72,
+            0.13
+        );
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.login-logo-wrapper {
+    width: 68px;
+    height: 68px;
+
+    margin:
+        0 auto 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.login-logo {
+    width: 68px;
+    height: 68px;
+
+    object-fit: contain;
+}
+
+
+.login-logo-fallback {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d8c1e8 0%,
+            #c7a9e3 100%
+        );
+
+    color: #311b48;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 30px;
+
+    font-weight: 800;
 }
 
 
@@ -198,25 +636,23 @@ body {
 ========================================================= */
 
 .login-heading {
-
     width: 100%;
 
     text-align: center;
 
-    margin-top: 34px;
-
-    margin-bottom: 26px;
-
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 
 .login-heading span {
-
     display: block;
 
     margin-bottom: 8px;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
     font-size: 10px;
 
@@ -225,39 +661,39 @@ body {
     letter-spacing: 1.8px;
 
     color: #7a5c70;
-
 }
 
 
 .login-heading h2 {
-
     margin: 0;
 
-    font-family: "Poppins", sans-serif;
+    font-family:
+        "Poppins",
+        sans-serif;
 
-    font-size: 24px;
+    font-size: 23px;
 
     line-height: 1.3;
 
     font-weight: 700;
 
     color: #303139;
-
 }
 
 
 .login-heading p {
+    margin:
+        7px 0 0;
 
-    margin: 7px 0 0;
-
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
     font-size: 12px;
 
     line-height: 1.6;
 
     color: #777984;
-
 }
 
 
@@ -266,47 +702,43 @@ body {
 ========================================================= */
 
 .login-form {
-
     width: 100%;
-
 }
 
 
 .form-group {
-
     width: 100%;
 
     margin-bottom: 18px;
-
 }
 
 
 .form-group label {
-
     display: block;
 
     margin-bottom: 7px;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
     font-size: 12px;
 
     font-weight: 700;
 
     color: #303139;
-
 }
 
 
 .form-group input {
-
     width: 100%;
-
     height: 46px;
 
-    padding: 0 14px;
+    padding:
+        0 14px;
 
-    border: 1px solid #d9dade;
+    border:
+        1px solid #d9dade;
 
     border-radius: 9px;
 
@@ -316,31 +748,34 @@ body {
 
     color: #303139;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
     font-size: 13px;
 
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
-
 }
 
 
 .form-group input::placeholder {
-
     color: #a0a1a8;
-
 }
 
 
 .form-group input:focus {
-
-    border-color: #7a5c70;
+    border-color: #b99bd8;
 
     box-shadow:
-        0 0 0 3px #eee7ec;
-
+        0 0 0 3px
+        rgba(
+            185,
+            155,
+            216,
+            0.18
+        );
 }
 
 
@@ -349,33 +784,30 @@ body {
 ========================================================= */
 
 .login-message {
-
     min-height: 18px;
 
-    margin: 2px 0 10px;
+    margin:
+        2px 0 10px;
 
     text-align: center;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
     font-size: 11px;
 
     font-weight: 600;
-
 }
 
 
 .login-message.error {
-
     color: #a76565;
-
 }
 
 
 .login-message.success {
-
     color: #606d5a;
-
 }
 
 
@@ -384,9 +816,7 @@ body {
 ========================================================= */
 
 .login-button {
-
     width: 100%;
-
     height: 46px;
 
     border: none;
@@ -395,11 +825,18 @@ body {
 
     cursor: pointer;
 
-    background: #594354;
+    background:
+        linear-gradient(
+            135deg,
+            #d2b8ea 0%,
+            #c7a9e3 100%
+        );
 
-    color: #ffffff;
+    color: #311b48;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
     font-size: 13px;
 
@@ -407,31 +844,40 @@ body {
 
     transition:
         transform 0.15s ease,
-        background 0.15s ease;
-
+        background 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
 
 .login-button:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #c7a9e3 0%,
+            #b99bd8 100%
+        );
 
-    background: #493746;
-
+    box-shadow:
+        0 5px 12px
+        rgba(
+            49,
+            27,
+            72,
+            0.12
+        );
 }
 
 
 .login-button:active {
-
-    transform: translateY(1px);
-
+    transform:
+        translateY(1px);
 }
 
 
 .login-button:disabled {
-
     opacity: 0.65;
 
     cursor: wait;
-
 }
 
 
@@ -440,51 +886,50 @@ body {
 ========================================================= */
 
 .demo-information {
-
     width: 100%;
 
     margin-top: 22px;
 
-    padding: 13px 15px;
+    padding:
+        13px 15px;
 
     border-radius: 9px;
 
     background: #f3f4f2;
 
     text-align: center;
-
 }
 
 
 .demo-information strong {
-
     display: block;
 
     margin-bottom: 4px;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
     font-size: 11px;
 
     font-weight: 700;
 
     color: #594354;
-
 }
 
 
 .demo-information span {
-
     display: block;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
     font-size: 10px;
 
     line-height: 1.5;
 
     color: #777984;
-
 }
 
 
@@ -493,12 +938,13 @@ body {
 ========================================================= */
 
 .login-footer {
-
-    margin-top: 23px;
+    margin-top: 20px;
 
     text-align: center;
 
-    font-family: "Inter", sans-serif;
+    font-family:
+        "Inter",
+        sans-serif;
 
     font-size: 9px;
 
@@ -507,7 +953,6 @@ body {
     letter-spacing: 1.2px;
 
     color: #a0a1a8;
-
 }
 
 
@@ -515,35 +960,145 @@ body {
    MOBILE
 ========================================================= */
 
-@media (max-width: 520px) {
+@media (max-width: 850px) {
 
     .login-page {
+        flex-direction: column;
 
-        padding: 20px 14px;
-
+        min-height: 100vh;
     }
 
 
-    .login-card {
+    .login-brand-panel {
+        width: 100%;
+        min-height: auto;
 
-        padding: 32px 24px 25px;
+        padding:
+            45px 25px 30px;
+    }
 
-        border-radius: 16px;
 
+    .login-brand-content {
+        max-width: 600px;
     }
 
 
     .login-brand h1 {
+        font-size: 44px;
+    }
 
-        font-size: 18px;
 
+    .login-brand-subtitle {
+        font-size: 15px;
+    }
+
+
+    .login-chart-card {
+        width: 365px;
+        max-width: 100%;
+    }
+
+
+    .login-mini-info {
+        width: 365px;
+        max-width: 100%;
+    }
+
+
+    .login-tagline {
+        font-size: 14px;
+    }
+
+
+    .login-form-panel {
+        width: 100%;
+        min-height: auto;
+
+        padding:
+            20px 25px 50px;
+
+        border-left: none;
+
+        border-top:
+            1px solid
+            rgba(
+                255,
+                255,
+                255,
+                0.45
+            );
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .login-brand-panel {
+        padding:
+            38px 16px 25px;
+    }
+
+
+    .login-brand h1 {
+        font-size: 38px;
+    }
+
+
+    .login-brand-subtitle {
+        font-size: 13px;
+    }
+
+
+    .login-chart-card {
+        height: 185px;
+
+        margin-top: 20px;
+
+        padding:
+            15px 15px 12px;
+    }
+
+
+    .login-mini-info {
+        gap: 5px;
+    }
+
+
+    .mini-info-card {
+        padding:
+            7px 6px;
+    }
+
+
+    .mini-info-card small {
+        display: none;
+    }
+
+
+    .login-tagline {
+        margin-top: 15px;
+
+        font-size: 13px;
+    }
+
+
+    .login-form-panel {
+        padding:
+            15px 14px 35px;
+    }
+
+
+    .login-card {
+        padding:
+            30px 24px 25px;
+
+        border-radius: 16px;
     }
 
 
     .login-heading h2 {
-
         font-size: 21px;
-
     }
 
 }

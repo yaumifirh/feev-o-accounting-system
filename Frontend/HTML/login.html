@@ -11,14 +11,16 @@
     >
 
     <title>
-        Login - FIFO Accounting System
+        Login - FEEV-O
     </title>
 
 
     <!-- GOOGLE FONT -->
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
@@ -42,169 +44,412 @@
 <div class="login-page">
 
 
-    <div class="login-card">
+    <!-- =================================================
+         LEFT BRANDING PANEL
+    ================================================== -->
+
+    <div class="login-brand-panel">
 
 
-        <!-- =================================================
-             LOGO
-        ================================================== -->
-
-        <div class="login-logo-wrapper">
+        <div class="login-brand-content">
 
 
-            <img
-                src="../ASSETS/logo.png"
-                alt="FIFO Accounting System"
-                class="login-logo"
-                onerror="
-                    this.style.display='none';
-                    document.getElementById('loginLogoFallback').style.display='flex';
-                "
-            >
+            <div class="login-brand">
 
 
-            <div
-                id="loginLogoFallback"
-                class="login-logo-fallback"
-            >
-                F
+                <h1>
+                    FEEV-O
+                </h1>
+
+
+                <p class="login-brand-subtitle">
+                    Sistem Akuntansi Persediaan Berbasis FIFO
+                </p>
+
+
+                <!-- =================================================
+                     VISUAL CHART
+                ================================================== -->
+
+                <div class="login-chart-card">
+
+
+                    <div class="chart-card-header">
+
+                        <div>
+                            <span>
+                                INVENTORY OVERVIEW
+                            </span>
+
+                            <strong>
+                                Persediaan
+                            </strong>
+                        </div>
+
+
+                        <div class="chart-card-icon">
+                            ↗
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-area">
+
+
+                        <div class="chart-grid-line line-one"></div>
+                        <div class="chart-grid-line line-two"></div>
+                        <div class="chart-grid-line line-three"></div>
+
+
+                        <svg
+                            class="inventory-chart"
+                            viewBox="0 0 360 125"
+                            preserveAspectRatio="none"
+                            aria-hidden="true"
+                        >
+
+                            <defs>
+
+                                <linearGradient
+                                    id="chartAreaGradient"
+                                    x1="0"
+                                    y1="0"
+                                    x2="0"
+                                    y2="1"
+                                >
+
+                                    <stop
+                                        offset="0%"
+                                        stop-color="#c7a9e3"
+                                        stop-opacity="0.35"
+                                    />
+
+                                    <stop
+                                        offset="100%"
+                                        stop-color="#c7a9e3"
+                                        stop-opacity="0"
+                                    />
+
+                                </linearGradient>
+
+                            </defs>
+
+
+                            <path
+                                class="chart-fill"
+                                d="
+                                    M 0 105
+                                    L 38 91
+                                    L 76 97
+                                    L 114 70
+                                    L 152 79
+                                    L 190 53
+                                    L 228 62
+                                    L 266 35
+                                    L 304 45
+                                    L 342 18
+                                    L 360 25
+                                    L 360 125
+                                    L 0 125
+                                    Z
+                                "
+                            ></path>
+
+
+                            <path
+                                class="chart-line"
+                                d="
+                                    M 0 105
+                                    L 38 91
+                                    L 76 97
+                                    L 114 70
+                                    L 152 79
+                                    L 190 53
+                                    L 228 62
+                                    L 266 35
+                                    L 304 45
+                                    L 342 18
+                                    L 360 25
+                                "
+                            ></path>
+
+
+                            <circle
+                                cx="342"
+                                cy="18"
+                                r="4"
+                                class="chart-point"
+                            ></circle>
+
+                        </svg>
+
+
+                    </div>
+
+
+                    <div class="chart-caption">
+
+                        <span>
+                            FIFO inventory flow
+                        </span>
+
+                        <span>
+                            Real-time overview
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     MINI INFORMATION CARDS
+                ================================================== -->
+
+                <div class="login-mini-info">
+
+
+                    <div class="mini-info-card">
+
+                        <span class="mini-info-icon">
+                            F
+                        </span>
+
+                        <div>
+                            <strong>
+                                FIFO
+                            </strong>
+
+                            <small>
+                                First In, First Out
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mini-info-card">
+
+                        <span class="mini-info-icon">
+                            H
+                        </span>
+
+                        <div>
+                            <strong>
+                                HPP
+                            </strong>
+
+                            <small>
+                                Cost of Goods Sold
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mini-info-card">
+
+                        <span class="mini-info-icon">
+                            I
+                        </span>
+
+                        <div>
+                            <strong>
+                                INVENTORY
+                            </strong>
+
+                            <small>
+                                Stock Management
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     TAGLINE
+                ================================================== -->
+
+                <p class="login-tagline">
+                    Track. Calculate. Report.
+                </p>
+
+
             </div>
 
 
         </div>
 
 
-        <!-- =================================================
-             BRAND
-        ================================================== -->
-
-        <div class="login-brand">
-
-            <h1>
-                FIFO ACCOUNTING SYSTEM
-            </h1>
-
-            <p>
-                Sistem Akuntansi Persediaan Berbasis FIFO
-            </p>
-
-        </div>
+    </div>
 
 
-        <!-- =================================================
-             HEADING
-        ================================================== -->
+    <!-- =================================================
+         RIGHT LOGIN PANEL
+    ================================================== -->
 
-        <div class="login-heading">
-
-            <span>
-                ACCOUNT ACCESS
-            </span>
-
-            <h2>
-                Selamat Datang
-            </h2>
-
-            <p>
-                Silakan masuk untuk mengakses
-                sistem akuntansi.
-            </p>
-
-        </div>
+    <div class="login-form-panel">
 
 
-        <!-- =================================================
-             FORM
-        ================================================== -->
-
-        <form
-            id="loginForm"
-            class="login-form"
-        >
+        <div class="login-card">
 
 
-            <div class="form-group">
+            <!-- =================================================
+                 LOGO
+            ================================================== -->
+
+            <div class="login-logo-wrapper">
 
 
-                <label for="email">
-                    Email
-                </label>
-
-
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="contoh@email.com"
-                    autocomplete="email"
-                    required
+                <img
+                    src="../ASSETS/logo.png"
+                    alt="FEEV-O"
+                    class="login-logo"
+                    onerror="
+                        this.style.display='none';
+                        document.getElementById('loginLogoFallback').style.display='flex';
+                    "
                 >
 
 
-            </div>
-
-
-            <div class="form-group">
-
-
-                <label for="password">
-                    Password
-                </label>
-
-
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Masukkan password"
-                    autocomplete="current-password"
-                    required
+                <div
+                    id="loginLogoFallback"
+                    class="login-logo-fallback"
                 >
+                    F
+                </div>
 
 
             </div>
 
 
-            <div
-                id="loginMessage"
-                class="login-message"
-            >
+            <!-- =================================================
+                 LOGIN HEADING
+            ================================================== -->
+
+            <div class="login-heading">
+
+
+                <span>
+                    ACCOUNT ACCESS
+                </span>
+
+
+                <h2>
+                    Selamat Datang
+                </h2>
+
+
+                <p>
+                    Silakan masuk untuk mengakses
+                    sistem akuntansi.
+                </p>
+
+
             </div>
 
 
-            <button
-                type="submit"
-                id="loginButton"
-                class="login-button"
+            <!-- =================================================
+                 FORM
+            ================================================== -->
+
+            <form
+                id="loginForm"
+                class="login-form"
             >
-                Login
-            </button>
 
 
-        </form>
+                <div class="form-group">
 
 
-        <!-- =================================================
-             DEMO INFO
-        ================================================== -->
-
-        <div class="demo-information">
-
-            <strong>
-                Demo System
-            </strong>
-
-            <span>
-                Gunakan email dan password bebas.
-                Tidak perlu membuat akun di Supabase.
-            </span>
-
-        </div>
+                    <label for="email">
+                        Email
+                    </label>
 
 
-        <div class="login-footer">
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="contoh@email.com"
+                        autocomplete="email"
+                        required
+                    >
 
-            FIFO ACCOUNTING SYSTEM
+
+                </div>
+
+
+                <div class="form-group">
+
+
+                    <label for="password">
+                        Password
+                    </label>
+
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Masukkan password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+
+                </div>
+
+
+                <div
+                    id="loginMessage"
+                    class="login-message"
+                >
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="login-button"
+                >
+                    Login
+                </button>
+
+
+            </form>
+
+
+            <!-- =================================================
+                 DEMO INFO
+            ================================================== -->
+
+            <div class="demo-information">
+
+
+                <strong>
+                    Demo System
+                </strong>
+
+
+                <span>
+                    Gunakan email dan password bebas.
+                    Tidak perlu membuat akun di Supabase.
+                </span>
+
+
+            </div>
+
+
+            <div class="login-footer">
+                FEEV-O
+            </div>
+
 
         </div>
 
