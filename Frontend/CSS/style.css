@@ -10013,7 +10013,8 @@ span {
    CUSTOMER - TOMBOL TAMBAH
 ========================================================= */
 
-#addCustomerButton {
+#addCustomerButton,
+#addCustomerFromSalesButton {
     min-height: 42px;
     height: 42px;
     padding: 0 18px;
@@ -10038,7 +10039,8 @@ span {
         transform 0.15s ease;
 }
 
-#addCustomerButton:hover {
+#addCustomerButton:hover,
+#addCustomerFromSalesButton:hover {
     background: #241333;
     border-color: #241333;
 
@@ -10054,7 +10056,8 @@ span {
         translateY(-1px);
 }
 
-#addCustomerButton:active {
+#addCustomerButton:active,
+#addCustomerFromSalesButton:active {
     transform:
         translateY(1px);
 
